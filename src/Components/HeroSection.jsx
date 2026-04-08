@@ -5,6 +5,9 @@ import { useTheme } from "./ThemeContext";
 import { ReactTyped } from "react-typed";
 import { useState, useEffect } from "react";
 
+import TobbyLogoBlack from "../assets/images/tobby-logo-black.png";
+import TobbyLogoWhite from "../assets/images/tobby-logo-white.png";
+
 const HeroSection = () => {
   const { isDark } = useTheme();
 
@@ -38,7 +41,7 @@ const HeroSection = () => {
           </div>
 
           <div className='w-full lg:w-1/2 hidden lg:block'>
-            <img src={isDark ? "/src/assets/images/tobby-logo-white.png" : "/src/assets/images/tobby-logo-black.png"} alt='' />
+            <img src={isDark ? TobbyLogoWhite : TobbyLogoBlack} alt='' />
           </div>
         </div>
 
