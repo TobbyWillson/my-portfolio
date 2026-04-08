@@ -1,0 +1,63 @@
+import { FaChevronDown, FaWhatsapp } from "react-icons/fa6";
+
+import { useTheme } from "./ThemeContext";
+
+import { ReactTyped } from "react-typed";
+import { useState, useEffect } from "react";
+
+const HeroSection = () => {
+  const { isDark } = useTheme();
+
+  //Page Scroll Checker
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 2);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className=''>
+      <div className='mt-27 sm:mt-40 '>
+        <div className='flex flex-wrap items-center '>
+          <div className='w-full lg:w-1/2 flex flex-col gap-9'>
+            <div className='max-[387px]:text-[32px] text-[35px]  max-sm:leading-13 sm:text-[42px] xl:text-5xl md:leading-15 text-center lg:text-start '>
+              <p className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-3'>Hey, Nice to meet you! </p>
+              <p>I'm Oluwatobi Wilson.</p>
+              <p className='text-[20px]  max-sm:leading-10 sm:text-[24px] md:leading-12 lg:leading-10 mt-5'>
+                A <span className='text-[#2563EB]'>&lt;&#47;</span>
+                <span className='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span>
+                <span className='text-[#2563EB]'>&gt;</span> <ReactTyped strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} typeSpeed={20} />
+              </p>
+            </div>
+            <p className='text-[16px] text-center lg:text-start sm:text-[16px] mt-5'> Do you have a design you have to make urgently? I am just one step away!</p>
+          </div>
+
+          <div className='w-full lg:w-1/2 hidden lg:block'>
+            <img src={isDark ? "/src/assets/images/tobby-logo-white.png" : "/src/assets/images/tobby-logo-black.png"} alt='' />
+          </div>
+        </div>
+
+        <div className='mt-8 pb-10 border-b border-border-gray'>
+          <div className='flex justify-center lg:justify-start '>
+            <button to='/'>
+              <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-100 to-white dark:from-gray-100 dark:to-gray-200 px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB] hover:scale-107 cursor-pointer transition-all duration-700 hover:text-[#192239]  gap-2'>
+                <FaWhatsapp className='w-5 h-5' />
+                Send a WhatsApp Message!
+              </div>
+            </button>
+          </div>
+          <div className={` ${scrolled ? "flex animate-bounce transition-all duration-500" : "hidden"} justify-center pt-12`}>
+            <FaChevronDown />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HeroSection;
