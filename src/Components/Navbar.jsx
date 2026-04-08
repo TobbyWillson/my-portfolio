@@ -10,6 +10,9 @@ import { useTheme } from "./ThemeContext";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
+import TobbyLogoBlack from "../assets/images/tobby-logo-black.png";
+import TobbyLogoWhite from "../assets/images/tobby-logo-white.png";
+
 const Navbar = () => {
   const [menuBar, setMenuBar] = useState(false);
   const [themeMode, setThemeMode] = useState(false);
@@ -62,7 +65,7 @@ const Navbar = () => {
       <div className='max-w-7xl mx-auto  flex justify-between items-center relative '>
         <div>
           <Link to='/'>
-            <img src={isDark ? "/src/assets/images/tobby-logo-white.png" : "/src/assets/images/tobby-logo-black.png"} alt='' className='w-25' />
+            <img src={isDark ? TobbyLogoWhite : TobbyLogoBlack} alt='' className='w-25' />
           </Link>
         </div>
 

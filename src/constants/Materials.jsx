@@ -4,6 +4,10 @@ import { Phone, Mail, MailPlus } from "lucide-react";
 
 import { SiJavascript, SiMongodb, SiNodedotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 
+import DeskilzPreview from "../assets/images/Deskilz.png";
+import MedibotPreview from "../assets/images/Medibot.png";
+import EbenezerPreview from "../assets/images/Ebenezer.jpg";
+
 const phoneNumber = "2348036524258";
 const message = encodeURIComponent("Good day, Tobby!");
 const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -36,7 +40,8 @@ export const previousProjects = [
   {
     projectName: "Ebenezer Portfolio",
     projectDescription: "A portfolio website designed specially for a product designer. Showcasing amazing products designed by him.",
-    projectPreview: "/src/assets/images/Ebenezer.jpg",
+    projectPreview: EbenezerPreview,
+    alt: "Ebenezer Portfolio",
     tools: ["React", "Tailwind", "CSS"],
     liveUrl: "https://akinebenezer.com",
     repoUrl: "https://github.com/TobbyWillson/Eben-Portfolio",
@@ -44,7 +49,8 @@ export const previousProjects = [
   {
     projectName: "Medibot - Medical Bot",
     projectDescription: "A trusted digital health companion. Our AI-powered chatbot is designed to provide you with accurate and personalized health information, support, and guidance.",
-    projectPreview: "/src/assets/images/Medibot.png",
+    projectPreview: MedibotPreview,
+    alt: "Medibot Preview",
     tools: ["React", "CSS"],
     liveUrl: "https://medibot-coral.vercel.app",
     repoUrl: "https://github.com/TobbyWillson/Medibot",
@@ -53,7 +59,8 @@ export const previousProjects = [
     projectName: "Deskilz Restaurant (Clone)",
     projectDescription: "Online food ordering service. Where you can order your favorite cuisine.",
 
-    projectPreview: "/src/assets/images/Deskilz.png",
+    projectPreview: DeskilzPreview,
+    alt: "Deskilz Web App Preview",
     tools: ["HTML", "CSS", "JavaScript"],
     liveUrl: "",
     repoUrl: "https://github.com/TobbyWillson/Deskilz-Clone",

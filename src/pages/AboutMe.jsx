@@ -40,7 +40,7 @@ const AboutMe = () => {
 
       <div className=' '>
         <div className='container mx-auto px-3'>
-          <div className=' mt-25 md:px-10'>
+          <div className=' mt-30 md:px-10'>
             {/* <img src='' alt='' className='' /> */}
             <div className='flex flex-col justify-center items-center gap-4 border-b border-border-gray pb-5 rounded-lg'>
               <p className='text-2xl sm:text-3xl lg:text-4xl'>Hi, {checkTimeOfDay()}</p>
