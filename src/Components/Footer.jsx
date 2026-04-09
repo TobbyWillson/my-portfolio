@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { contactProfiles } from "../constants/Materials";
-import { MailPlus } from "lucide-react";
 import { useState } from "react";
 
 // import BookingModal from "./BookingModal";
@@ -51,7 +50,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className='flex flex-col-reverse sm:flex-row gap-8 mt-15 justify-center items-center '>
+        <div className='flex flex-col-reverse sm:flex-row gap-5 mt-15 justify-center items-center '>
           <Link to='https://drive.google.com/file/d/1wjAULdzK-zRENYCg6fB0hiL7u-7OS_6g/view?usp=drive_link' target='_blank' rel='noopener noreferrer' className=' text-bg-text text-[16px] flex items-center gap-2' onClick={handleDownload}>
             {isDownloading ? (
               <>
@@ -66,10 +65,7 @@ const Footer = () => {
           {/* onClick={setIsModalOpen} */}
 
           <Link to='/contact'>
-            <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-300 to-white px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB]  hover:text-[#192239] hover:scale-107 cursor-pointer gap-2'>
-              <MailPlus className='w-5 h-5' />
-              Send a Mail
-            </div>
+            <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-300 to-white px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB]  hover:text-[#192239] hover:scale-107 cursor-pointer gap-2'>Hire Me!</div>
           </Link>
 
           {/* <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}

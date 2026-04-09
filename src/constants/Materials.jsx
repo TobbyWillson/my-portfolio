@@ -8,8 +8,22 @@ import DeskilzPreview from "../assets/images/Deskilz.png";
 import MedibotPreview from "../assets/images/Medibot.png";
 import EbenezerPreview from "../assets/images/Ebenezer.jpg";
 
+// WhatsApp link and message
+
+const time = new Date().getHours();
+
+const checkTimeOfDay = () => {
+  if (time >= 0 && time < 12) {
+    return "Good Morning";
+  } else if (time >= 12 && time < 16) {
+    return "Good Afternoon";
+  } else {
+    return "Good Evening";
+  }
+};
+
 const phoneNumber = "2348036524258";
-const message = encodeURIComponent("Good day, Tobby!");
+const message = encodeURIComponent(`${checkTimeOfDay()}, Tobby!`);
 const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
 export const navbarSection = [

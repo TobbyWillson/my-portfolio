@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Phone, Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+
 const EMAIL_ADDRESS = "a586447a37250038ed325c65a0bd0c19";
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL_ADDRESS}`;
 
@@ -22,7 +24,7 @@ const Contact = () => {
 
   const methodConfigs = {
     phone: { label: "Phone Number", placeholder: "+234 800 000 0000", type: "tel" },
-    chat: { label: "WhatsApp", placeholder: "WhatsApp number", type: "text" },
+    chat: { label: "WhatsApp Number", placeholder: "+234 800 000 0000", type: "tel" },
     email: { label: null, placeholder: null, type: null },
   };
 
@@ -32,9 +34,23 @@ const Contact = () => {
     { id: "chat", label: "WhatsApp", icon: <FaWhatsapp size={16} className='shrink-0' /> },
   ];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    let finalValue = value;
+
+    const isPhoneOrChat = formData.preferredMethod === "phone" || formData.preferredMethod === "chat";
+
+    if (name === "contactDetail" && isPhoneOrChat) {
+      if (value.length > 0 && !value.startsWith("+")) {
+        finalValue = `+${value}`;
+      }
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: finalValue,
+    }));
   };
 
   const handleMethodChange = (id) => {
@@ -45,8 +61,28 @@ const Contact = () => {
     }));
   };
 
+  const isPhoneOrChat = formData.preferredMethod === "phone" || formData.preferredMethod === "chat";
+  const phoneNumberObj = isPhoneOrChat ? parsePhoneNumberFromString(formData.contactDetail || "") : null;
+  const isPhoneInvalid = isPhoneOrChat && (!formData.contactDetail.startsWith("+") || !phoneNumberObj?.isValid());
+
+  const isEmailInvalid = formData.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (isPhoneInvalid) {
+      setFeedback({ type: "error", message: "" });
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 10);
+      return;
+    }
+
+    if (isEmailInvalid) {
+      setFeedback({ type: "error", message: "" });
+      setTimeout(() => setIsVisible(true), 10);
+      return;
+    }
 
     const { fullName, email, contactDetail, purpose, message, preferredMethod } = formData;
 
@@ -84,9 +120,21 @@ const Contact = () => {
       if (!response.ok) throw new Error();
 
       // WhatsApp redirects when Chat is picked
+      const time = new Date().getHours();
+
+      const checkTimeOfDay = () => {
+        if (time >= 0 && time < 12) {
+          return "Good Morning";
+        } else if (time >= 12 && time < 16) {
+          return "Good Afternoon";
+        } else {
+          return "Good Evening";
+        }
+      };
+
       if (preferredMethod === "chat") {
         const phone = contactDetail.replace(/\D/g, "");
-        const text = encodeURIComponent(`Hello, my name is ${fullName}. ${message}`);
+        const text = encodeURIComponent(`Hello, ${checkTimeOfDay()}, my name is ${fullName}. %0A%0A ${message}.`);
         window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
       }
 
@@ -107,7 +155,7 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    if (feedback.message) {
+    if (feedback.message || (feedback.type === "error" && isPhoneInvalid)) {
       setIsVisible(true);
 
       const fadeTimer = setTimeout(() => setIsVisible(false), 4000);
@@ -120,7 +168,7 @@ const Contact = () => {
         clearTimeout(clearTimer);
       };
     }
-  }, [feedback.message]);
+  }, [feedback.message, feedback.type, isPhoneInvalid]);
 
   return (
     <section className='my-30 max-w-3xl mx-auto' id='contact'>
@@ -164,7 +212,12 @@ const Contact = () => {
               className='rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
             />
 
-            {feedback.type === "error" && !formData.email && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Email Address is required.</span>}
+            {feedback.type === "error" &&
+              (!formData.email ? (
+                <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Email Address is required.</span>
+              ) : isEmailInvalid ? (
+                <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Please enter a valid email address.</span>
+              ) : null)}
           </label>
         </div>
 
@@ -202,7 +255,25 @@ const Contact = () => {
               className='rounded-lg border border-border-gray bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
             />
 
-            {feedback.type === "error" && !formData.contactDetail && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Preferred contact method detail is required.</span>}
+            {feedback.type === "error" && (
+              <div className='overflow-hidden'>
+                {!formData.contactDetail ? (
+                  <span
+                    className={`block text-xs transition-all duration-700 ease-out transform text-red-500 
+        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
+                  >
+                    Preferred contact method detail is required.
+                  </span>
+                ) : isPhoneInvalid ? (
+                  <span
+                    className={`block text-xs transition-all duration-700 ease-out transform text-red-500 
+        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
+                  >
+                    Please enter a valid phone number with country code (e.g. +234...).
+                  </span>
+                ) : null}
+              </div>
+            )}
           </label>
         )}
 
@@ -260,7 +331,7 @@ const Contact = () => {
         </button>
 
         {/* Feedback */}
-        {feedback.message && <p className={`text-sm transition-all duration-700 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"} ${feedback.type === "error" ? "text-red-500" : "text-green-600 dark:text-green-400"}`}>{feedback.message}</p>}
+        {feedback.message !== "" && <p className={`text-sm transition-all duration-700 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"} ${feedback.type === "error" ? "text-red-500" : "text-green-600 dark:text-green-400"}`}>{feedback.message}</p>}
       </form>
     </section>
   );

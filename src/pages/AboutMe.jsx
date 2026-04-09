@@ -27,10 +27,8 @@ const AboutMe = () => {
       return "Good Morning";
     } else if (time >= 12 && time < 16) {
       return "Good Afternoon";
-    } else if (time > 16) {
-      return "Good Evening";
     } else {
-      return Hello;
+      return "Good Evening";
     }
   };
 

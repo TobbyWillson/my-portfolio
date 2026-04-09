@@ -59,7 +59,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const { isDark } = useTheme();
+  const { isDark, setIsDark } = useTheme();
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
+
   return (
     <div className={`px-10 py-10 min-[570px]:px-15 sm:px-10 fixed inset-x-0 z-50 transition-all duration-700 ${scrolled ? "shadow-lg dark:shadow-gray-50/10 bg-background/60  backdrop-blur-lg" : ""}   `}>
       <div className='max-w-7xl mx-auto  flex justify-between items-center relative '>
@@ -83,8 +88,12 @@ const Navbar = () => {
           {menuBar ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
         </div>
 
-        <div className={`hidden sm:block rounded-full cursor-pointer py-1 border transition-all duration-500 ${themeMode ? "border-gray-400 pr-2 pl-9 bg-gray-600" : "border-amber-300 pl-2 pr-9 bg-gray-100"}`} onClick={handleTheme}>
-          {themeMode ? <MdDarkMode className='h-6 w-6 fill-gray-100' /> : <MdLightMode className='h-6 w-6 ' />}
+        <div
+          className={`hidden sm:block rounded-full cursor-pointer py-1 border transition-all duration-500 
+      ${isDark ? "border-gray-400 pr-2 pl-9 bg-gray-600" : "border-amber-300 pl-2 pr-9 bg-gray-100"}`}
+          onClick={toggleTheme}
+        >
+          {isDark ? <MdDarkMode className='h-6 w-6 fill-gray-100' /> : <MdLightMode className='h-6 w-6 text-amber-500' />}
         </div>
       </div>
 
@@ -97,9 +106,13 @@ const Navbar = () => {
             </div>
           ))}
 
-          <div className='flex justify-center items-center py-2 '>
-            <div className={`flex justify-start transition-all duration-500  py-1  rounded-full border ${themeMode ? "border-gray-400 pr-2 pl-9 bg-gray-600" : "border-amber-300 pl-2 pr-9 bg-gray-100"}`} onClick={handleTheme}>
-              {themeMode ? <MdDarkMode className='h-6 w-6 ' /> : <MdLightMode className='h-6 w-6 ' />}
+          <div className='flex justify-center items-center py-2'>
+            <div
+              className={`flex justify-start transition-all duration-500 py-1 rounded-full border cursor-pointer
+        ${isDark ? "border-gray-400 pr-2 pl-9 bg-gray-600" : "border-amber-300 pl-2 pr-9 bg-gray-100"}`}
+              onClick={handleTheme}
+            >
+              {isDark ? <MdDarkMode className='h-6 w-6 text-gray-100' /> : <MdLightMode className='h-6 w-6 text-amber-500' />}
             </div>
           </div>
         </div>
