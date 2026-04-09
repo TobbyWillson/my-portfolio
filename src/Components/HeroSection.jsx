@@ -32,7 +32,7 @@ const HeroSection = () => {
             <div className='max-[373px]:text-[28px] text-[30px]  max-sm:leading-13 sm:text-[42px] xl:text-5xl md:leading-15 text-center lg:text-start '>
               <p className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-2'>Hey, Nice to meet you! </p>
               <p>I'm Oluwatobi Wilson.</p>
-              <p className='text-[20px]  sm:text-[16px] sm:text-[24px] md:leading-12 lg:leading-10 mt-5'>
+              <p className='text-[20px]  max-sm:leading-8 sm:text-[24px] md:leading-12 lg:leading-10 mt-5'>
                 A <span className='text-[#2563EB]'>&lt;&#47;</span>
                 <span className='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span>
                 <span className='text-[#2563EB]'>&gt;</span> <ReactTyped strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} typeSpeed={20} />
