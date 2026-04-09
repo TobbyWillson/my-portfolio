@@ -134,7 +134,7 @@ const Contact = () => {
 
       if (preferredMethod === "chat") {
         const phone = contactDetail.replace(/\D/g, "");
-        const text = encodeURIComponent(`Hello, ${checkTimeOfDay()}, my name is ${fullName}. %0A%0A ${message}.`);
+        const text = encodeURIComponent(`Hello, ${checkTimeOfDay()}, my name is ${fullName}. \n\n ${message}.`);
         window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
       }
 
