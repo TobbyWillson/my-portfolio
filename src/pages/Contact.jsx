@@ -142,7 +142,7 @@ const Contact = () => {
   
   const text = encodeURIComponent(fullText);
   window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
-});uccessfully
+}
 
       setFeedback({
         type: "success",
