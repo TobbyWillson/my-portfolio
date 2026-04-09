@@ -258,7 +258,7 @@ const Contact = () => {
               onInput={(e) => e.target.setCustomValidity("")}
               placeholder={methodConfigs[formData.preferredMethod].placeholder}
               disabled={isSending}
-              className='rounded-lg border border-border-gray bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
+              className='rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
             />
 
             {feedback.type === "error" && (
