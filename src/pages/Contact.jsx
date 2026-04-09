@@ -172,7 +172,7 @@ const Contact = () => {
 
   return (
     <section className='my-30 max-w-3xl mx-auto' id='contact'>
-      <div className='mb-14 text-center flex flex-col gap-4'>
+      <div className='mb-14 text-center flex flex-col gap-4 border-b border-border-gray pb-5 rounded-lg'>
         <h1 className='text-3xl sm:text-4xl tracking-[3px]'>Contact Me</h1>
         <p className='text-sm sm:text-base dark:text-gray-100/60 text-bg-text/70 sm:mx-20'>Tell me who you are, your purpose, and your message. I will reach out to you as soon as possible.</p>
       </div>
