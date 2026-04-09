@@ -133,14 +133,20 @@ const Contact = () => {
       };
 
       if (preferredMethod === "chat") {
-        const phone = contactDetail.replace(/\D/g, "");
-        const text = encodeURIComponent(`Hello, ${checkTimeOfDay()}, my name is ${fullName}. \n\n${message}.`);
-        window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
-      }
+  const phone = contactDetail.replace(/\D/g, "");
+
+  const cleanMessage = message.trim();
+  const punctuation = cleanMessage.endsWith(".") ? "" : ".";
+  
+  const fullText = `Hello, ${checkTimeOfDay()}, my name is ${fullName}.\n\n${cleanMessage}${punctuation}`;
+  
+  const text = encodeURIComponent(fullText);
+  window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+});uccessfully
 
       setFeedback({
         type: "success",
-        message: "Thanks! Your details were sent successfully.",
+        message: "Thanks! Your details were sent successfully. I will get back to you as soon as possible.",
       });
 
       setFormData(initialFormData);
