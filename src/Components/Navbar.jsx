@@ -89,16 +89,16 @@ const Navbar = () => {
   onClick={handleMenu}
 >
   
-  <div className={`h-[2px] w-6 bg-current rounded-full transition-all duration-300 ease-in-out ${
-    menuBar ? "rotate-45 translate-y-[7px]" : ""
+  <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
+    menuBar ? "-rotate-45 -translate-y-[7px]" : ""
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 
-  <div className={`h-[2px] w-6 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
+  <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
     menuBar ? "opacity-0" : "opacity-100"
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 
-  <div className={`h-[2px] w-6 bg-current rounded-full transition-all duration-300 ease-in-out ${
-    menuBar ? "-rotate-45 -translate-y-[7px]" : ""
+  <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
+    menuBar ? "rotate-45 translate-y-[7px]" : ""
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 </div>
 
@@ -135,4 +135,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar; ort default Navbar; 
