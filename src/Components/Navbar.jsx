@@ -84,7 +84,7 @@ const Navbar = () => {
           ))}
         </div>
 
-     <div 
+    <div 
   className="sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group" 
   onClick={handleMenu}
 >
@@ -101,6 +101,7 @@ const Navbar = () => {
     menuBar ? "rotate-45 translate-y-[7px]" : ""
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 </div>
+ 
 
         <div
           className={`hidden sm:block rounded-full cursor-pointer py-1 border transition-all duration-500 
@@ -135,4 +136,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; ort default Navbar; 
+export default Navbar;
