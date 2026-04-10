@@ -39,7 +39,7 @@ const RootLayout = () => {
 
           {/* Footer Footer */}
           <div className=' flex justify-center pt-15 pb-20 md:pb-35 border border-border-gray border-x-0 bg-gray-50 dark:bg-[#364153]'>
-            <p className='font-semibold tracking-wider text-[12px]'>&copy; {year} — Copyright @tobbywillson</p>
+            <p className='font-semibold tracking-wider text-[12px]'>&copy; {year} tobbywillson. All Rights Reserved.</p>
           </div>
         </footer>
       </div>
