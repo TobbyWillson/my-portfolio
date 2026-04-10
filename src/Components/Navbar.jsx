@@ -89,15 +89,15 @@ const Navbar = () => {
   onClick={handleMenu}
 >
   
-  <div className={`h-[2px] w-6 bg-current rounded-full transition-all duration-300 ease-in-out ${
+  <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
     menuBar ? "-rotate-45 translate-y-[7px] -translate-x-[2px]" : ""
   } `} />
 
-  <div className={`h-[2px] w-6 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
+  <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
     menuBar ? "opacity-0" : "opacity-100"
   } `} />
 
-  <div className={`h-[2px] w-6 bg-current rounded-full transition-all duration-300 ease-in-out ${
+  <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
     menuBar ? "rotate-45 -translate-y-[7px] -translate-x-[2px]" : ""
   } `} />
 </div>
