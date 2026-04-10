@@ -84,24 +84,23 @@ const Navbar = () => {
           ))}
         </div>
 
-    <div 
+  <div 
   className="sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group" 
   onClick={handleMenu}
 >
   
   <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
-    menuBar ? "-rotate-45 -translate-y-[7px]" : ""
+    menuBar ? "-rotate-45 translate-y-[7px] -translate-x-[2px]" : ""
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 
   <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
-    menuBar ? "opacity-0" : "opacity-100"
+    menuBar ? "opacity-0 translate-x-2" : "opacity-100"
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 
   <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
-    menuBar ? "rotate-45 translate-y-[7px]" : ""
+    menuBar ? "rotate-45 -translate-y-[7px] -translate-x-[2px]" : ""
   } ${isDark ? "text-white" : "text-gray-600"}`} />
 </div>
- 
 
         <div
           className={`hidden sm:block rounded-full cursor-pointer py-1 border transition-all duration-500 
