@@ -84,9 +84,23 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className={`sm:hidden cursor-pointer transition-all duration-300  ${document.documentElement.classList.contains("dark") ? "text-[#ececec] hover:text-white" : "text-[gray] hover:text-black"} `} onClick={handleMenu}>
-          {menuBar ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
-        </div>
+     <div 
+  className="sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group" 
+  onClick={handleMenu}
+>
+  
+  <div className={`h-[2px] w-6 bg-current rounded-full transition-all duration-300 ease-in-out ${
+    menuBar ? "rotate-45 translate-y-[7px]" : ""
+  } ${isDark ? "text-white" : "text-gray-600"}`} />
+
+  <div className={`h-[2px] w-6 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
+    menuBar ? "opacity-0" : "opacity-100"
+  } ${isDark ? "text-white" : "text-gray-600"}`} />
+
+  <div className={`h-[2px] w-6 bg-current rounded-full transition-all duration-300 ease-in-out ${
+    menuBar ? "-rotate-45 -translate-y-[7px]" : ""
+  } ${isDark ? "text-white" : "text-gray-600"}`} />
+</div>
 
         <div
           className={`hidden sm:block rounded-full cursor-pointer py-1 border transition-all duration-500 
@@ -121,4 +135,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; 
