@@ -133,7 +133,7 @@ const Contact = () => {
       };
 
       if (preferredMethod === "chat") {
-  const phone = contactDetail.replace(/\D/g, "");
+  const phone = `2348036524258`;
 
   const cleanMessage = message.trim();
   const punctuation = cleanMessage.endsWith(".") ? "" : ".";
