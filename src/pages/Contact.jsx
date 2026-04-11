@@ -133,16 +133,16 @@ const Contact = () => {
       };
 
       if (preferredMethod === "chat") {
-  const phone = `2348036524258`;
+        const phone = `2348036524258`;
 
-  const cleanMessage = message.trim();
-  const punctuation = cleanMessage.endsWith(".") ? "" : ".";
-  
-  const fullText = `Hello, ${checkTimeOfDay()}, my name is ${fullName}.\n\n${cleanMessage}${punctuation}`;
-  
-  const text = encodeURIComponent(fullText);
-  window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
-}
+        const cleanMessage = message.trim();
+        const punctuation = cleanMessage.endsWith(".") ? "" : ".";
+
+        const fullText = `Hello, ${checkTimeOfDay()}, my name is ${fullName}.\n\n${cleanMessage}${punctuation}`;
+
+        const text = encodeURIComponent(fullText);
+        window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+      }
 
       setFeedback({
         type: "success",
@@ -176,6 +176,20 @@ const Contact = () => {
     }
   }, [feedback.message, feedback.type, isPhoneInvalid]);
 
+  // Clear X button
+  const xButton = (
+    <svg xmlns='http://w3.org' viewBox='0 0 20 20' fill='currentColor' className='w-5 h-5'>
+      <path d='M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z' />
+    </svg>
+  );
+
+  const handleClear = (fieldName) => {
+    setFormData((prev) => ({
+      ...prev,
+      [fieldName]: "",
+    }));
+  };
+
   return (
     <section className='my-30 max-w-3xl mx-auto' id='contact'>
       <div className='mb-14 text-center flex flex-col gap-4 border-b border-border-gray pb-5 rounded-lg'>
@@ -187,36 +201,47 @@ const Contact = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-7'>
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Full Name</span>
-            <input
-              type='text'
-              name='fullName'
-              required
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder='John Doe'
-              disabled={isSending}
-              onInvalid={(e) => e.target.setCustomValidity("Please enter your full name!")}
-              onInput={(e) => e.target.setCustomValidity("")}
-              className='rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
-            />
+            <div className='relative flex items-center'>
+              <input
+                type='text'
+                name='fullName'
+                required
+                value={formData.fullName}
+                onChange={handleChange}
+                placeholder='John Doe'
+                disabled={isSending}
+                className='w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+              />
+
+              {formData.fullName && !isSending && (
+                <button type='button' onClick={() => handleClear("fullName")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors' aria-label='Clear input'>
+                  {xButton}
+                </button>
+              )}
+            </div>
 
             {feedback.type === "error" && !formData.fullName && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Full Name is required.</span>}
           </label>
 
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Email Address</span>
-            <input
-              type='email'
-              name='email'
-              required
-              value={formData.email}
-              onChange={handleChange}
-              onInvalid={(e) => e.target.setCustomValidity("Please enter your Email Address!")}
-              onInput={(e) => e.target.setCustomValidity("")}
-              placeholder='johndoe@example.com'
-              disabled={isSending}
-              className='rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
-            />
+            <div className='relative flex items-center'>
+              <input
+                type='email'
+                name='email'
+                required
+                value={formData.email}
+                onChange={handleChange}
+                placeholder='johndoe@example.com'
+                disabled={isSending}
+                className='w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+              />
+              {formData.email && !isSending && (
+                <button type='button' onClick={() => handleClear("email")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
+                  {xButton}
+                </button>
+              )}
+            </div>
 
             {feedback.type === "error" &&
               (!formData.email ? (
@@ -248,18 +273,23 @@ const Contact = () => {
         {formData.preferredMethod !== "email" && (
           <label className='flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-300'>
             <span className='text-sm font-medium'>{methodConfigs[formData.preferredMethod].label}</span>
-            <input
-              type={methodConfigs[formData.preferredMethod].type}
-              name='contactDetail'
-              required
-              value={formData.contactDetail}
-              onChange={handleChange}
-              onInvalid={(e) => e.target.setCustomValidity("Please enter your preferred method of contact details!")}
-              onInput={(e) => e.target.setCustomValidity("")}
-              placeholder={methodConfigs[formData.preferredMethod].placeholder}
-              disabled={isSending}
-              className='rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
-            />
+            <div className='relative flex items-center'>
+              <input
+                type={methodConfigs[formData.preferredMethod].type}
+                name='contactDetail'
+                required
+                value={formData.contactDetail}
+                onChange={handleChange}
+                placeholder={methodConfigs[formData.preferredMethod].placeholder}
+                disabled={isSending}
+                className='w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+              />
+              {formData.contactDetail && !isSending && (
+                <button type='button' onClick={() => handleClear("contactDetail")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
+                  {xButton}
+                </button>
+              )}
+            </div>
 
             {feedback.type === "error" && (
               <div className='overflow-hidden'>
@@ -286,18 +316,23 @@ const Contact = () => {
         {/* Purpose */}
         <label className='flex flex-col gap-2'>
           <span className='text-sm font-medium text-bg-text dark:text-white'>Purpose</span>
-          <input
-            type='text'
-            name='purpose'
-            required
-            value={formData.purpose}
-            onChange={handleChange}
-            onInvalid={(e) => e.target.setCustomValidity("Please let us know your purpose of contacting us!")}
-            onInput={(e) => e.target.setCustomValidity("")}
-            placeholder='Website redesign, Collaboration...'
-            disabled={isSending}
-            className='rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB]'
-          />
+          <div className='relative flex items-center'>
+            <input
+              type='text'
+              name='purpose'
+              required
+              value={formData.purpose}
+              onChange={handleChange}
+              placeholder='Website redesign...'
+              disabled={isSending}
+              className='w-full rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+            />
+            {formData.purpose && !isSending && (
+              <button type='button' onClick={() => handleClear("purpose")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
+                {xButton}
+              </button>
+            )}
+          </div>
 
           {feedback.type === "error" && !formData.purpose && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Purpose of message is required.</span>}
         </label>

@@ -84,23 +84,13 @@ const Navbar = () => {
           ))}
         </div>
 
-  <div 
-  className={`sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group  ${isDark ? "text-[#ececec] hover:text-white" : "text-[gray] hover:text-black"} `}  
-  onClick={handleMenu}
->
-  
-  <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
-    menuBar ? "-rotate-45 translate-y-[7px] -translate-x-[2px]" : ""
-  } `} />
+        <div className={`sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group  ${isDark ? "text-[#ececec] hover:text-white" : "text-[gray] hover:text-black"} `} onClick={handleMenu}>
+          <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-500 ease-in-out ${menuBar ? "-rotate-45 translate-y-[7px]" : ""} `} />
 
-  <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-300 ease-in-out ${
-    menuBar ? "opacity-0" : "opacity-100"
-  } `} />
+          <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-500 ease-in-out ${menuBar ? "opacity-0" : "opacity-100"} `} />
 
-  <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
-    menuBar ? "rotate-45 -translate-y-[7px] -translate-x-[2px]" : ""
-  } `} />
-</div>
+          <div className={`h-[2px] w-5 bg-current rounded-full transition-all duration-500 ease-in-out ${menuBar ? "rotate-45 -translate-y-[7px]" : ""} `} />
+        </div>
 
         <div
           className={`hidden sm:block rounded-full cursor-pointer py-1 border transition-all duration-500 
