@@ -67,8 +67,18 @@ const Contact = () => {
 
   const isEmailInvalid = formData.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
 
+  const isPurposeValid = formData.purpose.length >= 10;
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!isPurposeValid) {
+      setFeedback({ type: "error", message: "" });
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 10);
+      return;
+    }
 
     if (isPhoneInvalid) {
       setFeedback({ type: "error", message: "" });
@@ -315,7 +325,8 @@ const Contact = () => {
               onChange={handleChange}
               placeholder='Website redesign, Collaboration...'
               disabled={isSending}
-              className='w-full rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+              className={`w-full rounded-lg border text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none transition-colors 
+        ${feedback.type === "error" && formData.purpose.length < 10 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
             />
             {formData.purpose && !isSending && (
               <button type='button' onClick={() => handleClear("purpose")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
@@ -324,7 +335,15 @@ const Contact = () => {
             )}
           </div>
 
-          {feedback.type === "error" && !formData.purpose && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Purpose of message is required.</span>}
+          {feedback.type === "error" && (
+            <div className='overflow-hidden'>
+              {!formData.purpose ? (
+                <span className={`block text-xs transition-all duration-500 text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Purpose of message is required.</span>
+              ) : formData.purpose.length < 10 ? (
+                <span className={`block text-xs transition-all duration-500 text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Purpose must be at least 10 letters (current: {formData.purpose.length}).</span>
+              ) : null}
+            </div>
+          )}
         </label>
 
         {/* Message Field */}
