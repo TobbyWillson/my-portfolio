@@ -40,7 +40,7 @@ const PreviousProjects = () => {
                 className={`scroll-item  group flex flex-col overflow-hidden rounded-xl shadow-md dark:shadow-gray-50/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-gray-50/15 ${isDark ? "bg-[#272f3a] dark:hover:bg-[#2f3844]" : "bg-gray-100 hover:bg-gray-50"}`}
               >
                 <div className='relative aspect-[16/10] overflow-hidden bg-gray-200 dark:bg-gray-800'>
-                  <img src={project.projectPreview} alt='project preview' className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-110' loading='lazy' />
+                  <img src={project.projectPreview} alt={project.alt} className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-110' loading='lazy' />
                   <div className='pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-80' />
                 </div>
 

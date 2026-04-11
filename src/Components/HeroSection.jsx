@@ -42,7 +42,7 @@ const HeroSection = () => {
           </div>
 
           <div className='w-full lg:w-1/2 hidden lg:block'>
-            <img src={isDark ? TobbyLogoWhite : TobbyLogoBlack} alt='' />
+            <img src={isDark ? TobbyLogoWhite : TobbyLogoBlack} alt='Tobby Logo' />
           </div>
         </div>
 

@@ -294,19 +294,9 @@ const Contact = () => {
             {feedback.type === "error" && (
               <div className='overflow-hidden'>
                 {!formData.contactDetail ? (
-                  <span
-                    className={`block text-xs transition-all duration-700 ease-out transform text-red-500 
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
-                  >
-                    Preferred contact method detail is required.
-                  </span>
+                  <span className={`block text-xs transition-all duration-700 ease-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Preferred contact method detail is required.</span>
                 ) : isPhoneInvalid ? (
-                  <span
-                    className={`block text-xs transition-all duration-700 ease-out transform text-red-500 
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
-                  >
-                    Please enter a valid phone number with country code (e.g. +234...).
-                  </span>
+                  <span className={`block text-xs transition-all duration-700 ease-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Please enter a valid phone number with country code (e.g. +234...).</span>
                 ) : null}
               </div>
             )}
@@ -323,7 +313,7 @@ const Contact = () => {
               required
               value={formData.purpose}
               onChange={handleChange}
-              placeholder='Website redesign...'
+              placeholder='Website redesign, Collaboration...'
               disabled={isSending}
               className='w-full rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
             />
