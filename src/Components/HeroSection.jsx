@@ -1,3 +1,4 @@
+
 import { FaChevronDown } from "react-icons/fa6";
 
 import { useTheme } from "./ThemeContext";
@@ -35,7 +36,13 @@ const HeroSection = () => {
               <p className='text-[20px] max-sm:leading-8 sm:text-[24px] md:leading-12 lg:leading-10 mt-5'>
                 A <span className='text-[#2563EB]'>&lt;&#47;</span>
                 <span className='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span>
-                <span className='text-[#2563EB]'>&gt;</span> <ReactTyped strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} typeSpeed={20} />
+                <span className='text-[#2563EB]'>&gt;</span>
+<span className="inline-block min-h-[5rem] sm:min-h-[3rem] ml-2">
+    <ReactTyped 
+      strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} 
+      typeSpeed={20} 
+    />
+  </span> 
               </p>
             </div>
             <p className='text-[16px] text-center lg:text-start mt-4 sm:mt-5'> Do you have a design you have to make urgently? I am just one step away!</p>
