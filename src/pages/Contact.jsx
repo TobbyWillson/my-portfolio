@@ -234,7 +234,6 @@ const triggerSquish = (fieldName) => {
   onChange={handleChange}
   placeholder='John Doe'
   disabled={isSending}
-  {/* Add the animation class conditionally */}
   className={`w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] 
     ${animatingField === "fullName" ? "animate-squish" : ""}`}
 />
@@ -242,7 +241,6 @@ const triggerSquish = (fieldName) => {
 {formData.fullName && !isSending && (
   <button 
     type='button' 
-    {/* Change handleClear to triggerSquish */}
     onClick={() => triggerSquish("fullName")} 
     className='absolute right-3 text-gray-400 hover:text-red-500 active:scale-75 transition-all'
   >
