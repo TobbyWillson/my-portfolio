@@ -234,7 +234,7 @@ const triggerSquish = (fieldName) => {
   onChange={handleChange}
   placeholder='John Doe'
   disabled={isSending}
-  className={`w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] 
+  className={`w-full overflow-hidden rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] 
     ${animatingField === "fullName" ? "animate-squish" : ""}`}
 />
 
