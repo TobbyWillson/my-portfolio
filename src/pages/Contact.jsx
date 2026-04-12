@@ -200,21 +200,6 @@ const Contact = () => {
     }));
   };
 
-
-
-const [animatingField, setAnimatingField] = useState(null);
-
-
-const triggerSquish = (fieldName) => {
-  setAnimatingField(fieldName); 
-  
-  setTimeout(() => {
-    handleClear(fieldName);      
-    setAnimatingField(null);     
-  }, 250); 
-};
-
-
   return (
     <section className='my-30 max-w-3xl mx-auto' id='contact'>
       <div className='mb-14 text-center flex flex-col gap-4 border-b border-border-gray pb-5 rounded-lg'>
@@ -227,27 +212,22 @@ const triggerSquish = (fieldName) => {
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Full Name</span>
             <div className='relative flex items-center'>
-             <input
-  type='text'
-  name='fullName'
-  value={formData.fullName}
-  onChange={handleChange}
-  placeholder='John Doe'
-  disabled={isSending}
-  className={`w-full overflow-hidden rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] 
-    ${animatingField === "fullName" ? "animate-squish" : ""}`}
-/>
+              <input
+                type='text'
+                name='fullName'
+                required
+                value={formData.fullName}
+                onChange={handleChange}
+                placeholder='John Doe'
+                disabled={isSending}
+                className='w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+              />
 
-{formData.fullName && !isSending && (
-  <button 
-    type='button' 
-    onClick={() => triggerSquish("fullName")} 
-    className='absolute right-3 text-gray-400 hover:text-red-500 active:scale-75 transition-all'
-  >
-    {xButton}
-  </button>
-)}
-
+              {formData.fullName && !isSending && (
+                <button type='button' onClick={() => handleClear("fullName")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors' aria-label='Clear input'>
+                  {xButton}
+                </button>
+              )}
             </div>
 
             {feedback.type === "error" && !formData.fullName && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Full Name is required.</span>}

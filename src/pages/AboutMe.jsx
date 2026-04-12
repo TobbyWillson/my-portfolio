@@ -32,6 +32,12 @@ const AboutMe = () => {
     }
   };
 
+  // WhatsApp link and message
+
+  const phoneNumber = "2348036524258";
+  const message = encodeURIComponent(`${checkTimeOfDay()}, Tobby!`);
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+
   return (
     <div className=''>
       {/* Current Page Bar */}
@@ -76,20 +82,20 @@ const AboutMe = () => {
             <Link to='https://drive.google.com/file/d/1wjAULdzK-zRENYCg6fB0hiL7u-7OS_6g/view?usp=drive_link' target='_blank' rel='noopener noreferrer' className='text-[#192239] text-[16px] hover:scale-105 transition-all duration-700 flex items-center gap-2' onClick={handleDownload}>
               {isDownloading ? (
                 <>
-                  Opening document
-                  <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin'></span>
+                  <p className='text-bg-text'>Opening document</p>
+                  <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full  text-bg-text animate-spin'></span>
                 </>
               ) : (
                 <div className='bg-[#DCEFFF] flex justify-center px-5 py-3 rounded-full'>My Resume</div>
               )}
             </Link>
 
-            <button to='/' className='max-sm:'>
+            <Link to={whatsappURL} target='_blank' rel='noreferrer' className='max-sm:'>
               <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-100 to-white dark:from-gray-100 dark:to-gray-200 px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB] hover:text-[#192239] hover:scale-107 transition-all duration-700 cursor-pointer gap-2'>
                 <FaWhatsapp className='w-5 h-5' />
                 WhatsApp Me!
               </div>
-            </button>
+            </Link>
           </div>
           {/* <p className={`${downloadMessage ? "absolute -translate-y-45 bg-gray-900 text-white p-4 rounded-xl shadow-2xl  transition-all duration-700" : ""} `}>{downloadMessage}</p> */}
         </div>
