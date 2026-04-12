@@ -33,17 +33,29 @@ const HeroSection = () => {
             <div className='max-[373px]:text-[28px] text-[30px]  max-sm:leading-13 sm:text-[42px] xl:text-5xl md:leading-15 text-center lg:text-start '>
               <p className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-2'>Hey, Nice to meet you! </p>
               <p>I'm Oluwatobi Wilson.</p>
-              <p className='text-[20px] max-sm:leading-8 sm:text-[24px] md:leading-12 lg:leading-10 mt-5'>
-                A <span className='text-[#2563EB]'>&lt;&#47;</span>
-                <span className='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span>
-                <span className='text-[#2563EB]'>&gt;</span>
-<span className="inline-block min-h-[9rem] sm:min-h-[7rem] ml-2">
-    <ReactTyped 
-      strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} 
-      typeSpeed={20} 
-    />
-  </span> 
-              </p>
+          <p className='text-[20px] max-sm:leading-8 sm:text-[24px] md:leading-12 lg:leading-10 mt-5'>
+  A <span className='text-[#2563EB]'>&lt;/</span>
+  <span className='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span>
+  <span className='text-[#2563EB]'>&gt;</span> 
+  
+ 
+  <span className="relative inline-block ml-2">
+   
+    <span className="invisible" aria-hidden="true">
+      based in Nigeria. I am focused on designing a very clear, trusted digital platforms.
+    </span>
+
+ 
+    <span className="absolute top-0 left-0 w-full">
+      <ReactTyped 
+        strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} 
+        typeSpeed={20} 
+      />
+    </span>
+  </span>
+</p>
+
+
             </div>
             <p className='text-[16px] text-center lg:text-start mt-4 sm:mt-5'> Do you have a design you have to make urgently? I am just one step away!</p>
           </div>
@@ -70,4 +82,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection; 
+export default HeroSection;
