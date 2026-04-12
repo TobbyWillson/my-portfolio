@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Phone, Mail } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa6";
 
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import { methodConfigs, methods } from "../constants/Materials";
 
 const EMAIL_ADDRESS = "a586447a37250038ed325c65a0bd0c19";
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL_ADDRESS}`;
@@ -21,18 +20,6 @@ const Contact = () => {
   const [feedback, setFeedback] = useState({ type: "", message: "" });
   const [isVisible, setIsVisible] = useState(false);
   const [isSending, setIsSending] = useState(false);
-
-  const methodConfigs = {
-    phone: { label: "Phone Number", placeholder: "+234 800 000 0000", type: "tel" },
-    chat: { label: "WhatsApp Number", placeholder: "+234 800 000 0000", type: "tel" },
-    email: { label: null, placeholder: null, type: null },
-  };
-
-  const methods = [
-    { id: "phone", label: "Phone", icon: <Phone size={16} className='shrink-0' /> },
-    { id: "email", label: "Email", icon: <Mail size={16} className='shrink-0' /> },
-    { id: "chat", label: "WhatsApp", icon: <FaWhatsapp size={16} className='shrink-0' /> },
-  ];
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -61,36 +48,31 @@ const Contact = () => {
     }));
   };
 
+  // Check phone number's validity (+ and country code)
   const isPhoneOrChat = formData.preferredMethod === "phone" || formData.preferredMethod === "chat";
   const phoneNumberObj = isPhoneOrChat ? parsePhoneNumberFromString(formData.contactDetail || "") : null;
   const isPhoneInvalid = isPhoneOrChat && (!formData.contactDetail.startsWith("+") || !phoneNumberObj?.isValid());
 
+  // Check Email validity
   const isEmailInvalid = formData.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
 
+  // Check if Name is invalid
+  const isNameValid = formData.fullName.length < 5;
+
+  // Check if purpose is less than 10
   const isPurposeValid = formData.purpose.length >= 10;
+
+  // Check Message validity
+  const isMessageValid = formData.message.length < 15;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!isPurposeValid) {
+    if (!isPurposeValid || isPhoneInvalid || isEmailInvalid || isNameValid || isMessageValid) {
       setFeedback({ type: "error", message: "" });
       setTimeout(() => {
         setIsVisible(true);
       }, 10);
-      return;
-    }
-
-    if (isPhoneInvalid) {
-      setFeedback({ type: "error", message: "" });
-      setTimeout(() => {
-        setIsVisible(true);
-      }, 10);
-      return;
-    }
-
-    if (isEmailInvalid) {
-      setFeedback({ type: "error", message: "" });
-      setTimeout(() => setIsVisible(true), 10);
       return;
     }
 
@@ -163,7 +145,7 @@ const Contact = () => {
     } catch {
       setFeedback({
         type: "error",
-        message: "Unable to send. Please try again.",
+        message: "Unable to send. Please check your network connection and try again.",
       });
     } finally {
       setIsSending(false);
@@ -171,7 +153,7 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    if (feedback.message || (feedback.type === "error" && isPhoneInvalid)) {
+    if (feedback.type) {
       setIsVisible(true);
 
       const fadeTimer = setTimeout(() => setIsVisible(false), 4000);
@@ -184,7 +166,7 @@ const Contact = () => {
         clearTimeout(clearTimer);
       };
     }
-  }, [feedback.message, feedback.type, isPhoneInvalid]);
+  }, [feedback.type]);
 
   // Clear X button
   const xButton = (
@@ -209,6 +191,7 @@ const Contact = () => {
 
       <form onSubmit={handleSubmit} noValidate className='rounded-xl bg-gray-200 dark:bg-[#272f3a] shadow-md dark:shadow-gray-50/10 p-4 sm:p-8 flex flex-col gap-5'>
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-7'>
+          {/* Full Name Input field and label */}
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Full Name</span>
             <div className='relative flex items-center'>
@@ -220,7 +203,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder='John Doe'
                 disabled={isSending}
-                className='w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+                className={`w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] ${feedback.type === "error" && isNameValid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
               />
 
               {formData.fullName && !isSending && (
@@ -230,9 +213,18 @@ const Contact = () => {
               )}
             </div>
 
-            {feedback.type === "error" && !formData.fullName && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Full Name is required.</span>}
+            {feedback.type === "error" && (
+              <div className='overflow-hidden'>
+                {!formData.fullName ? (
+                  <span className={`block text-xs transition-all duration-500 text-red-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Full Name is required.</span>
+                ) : formData.fullName.length < 5 ? (
+                  <span className={`block text-xs transition-all duration-500 text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Full name must be at least 5 letters (current: {formData.fullName.length}).</span>
+                ) : null}
+              </div>
+            )}
           </label>
 
+          {/* Email Address Input Field and Label */}
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Email Address</span>
             <div className='relative flex items-center'>
@@ -244,7 +236,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder='johndoe@example.com'
                 disabled={isSending}
-                className='w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+                className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && (formData.email.length < 1 || isEmailInvalid) ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
               />
               {formData.email && !isSending && (
                 <button type='button' onClick={() => handleClear("email")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
@@ -279,7 +271,7 @@ const Contact = () => {
             ))}
           </div>
         </div>
-
+        {/* Phone or Chat Input field */}
         {formData.preferredMethod !== "email" && (
           <label className='flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-300'>
             <span className='text-sm font-medium'>{methodConfigs[formData.preferredMethod].label}</span>
@@ -292,7 +284,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder={methodConfigs[formData.preferredMethod].placeholder}
                 disabled={isSending}
-                className='w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]'
+                className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && isPhoneInvalid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
               />
               {formData.contactDetail && !isSending && (
                 <button type='button' onClick={() => handleClear("contactDetail")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
@@ -313,7 +305,7 @@ const Contact = () => {
           </label>
         )}
 
-        {/* Purpose */}
+        {/* Purpose of Contact*/}
         <label className='flex flex-col gap-2'>
           <span className='text-sm font-medium text-bg-text dark:text-white'>Purpose</span>
           <div className='relative flex items-center'>
@@ -325,8 +317,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder='Website redesign, Collaboration...'
               disabled={isSending}
-              className={`w-full rounded-lg border text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none transition-colors 
-        ${feedback.type === "error" && formData.purpose.length < 10 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
+              className={`w-full rounded-lg border text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none transition-colors ${feedback.type === "error" && formData.purpose.length < 10 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
             />
             {formData.purpose && !isSending && (
               <button type='button' onClick={() => handleClear("purpose")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
@@ -359,10 +350,18 @@ const Contact = () => {
             onChange={handleChange}
             placeholder='Share your project details...'
             disabled={isSending}
-            className='rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB] resize-y'
+            className={`rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB] resize-y  ${feedback.type === "error" && formData.message.length < 15 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
           />
 
-          {feedback.type === "error" && !formData.message && <span className={`text-xs transition-all duration-500 ease-in-out transform text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Message is required.</span>}
+          {feedback.type === "error" && (
+            <div className='overflow-hidden'>
+              {!formData.message ? (
+                <span className={`block text-xs transition-all duration-500 text-red-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Message is required.</span>
+              ) : formData.message.length < 15 ? (
+                <span className={`block text-xs transition-all duration-500 text-red-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>Message content must not be less than 15 letters (current: {formData.fullName.length}).</span>
+              ) : null}
+            </div>
+          )}
         </label>
 
         <button

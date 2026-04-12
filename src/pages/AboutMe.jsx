@@ -54,7 +54,7 @@ const AboutMe = () => {
 
           {/* Details and Biography */}
           <div id='resume' className='md:px-10 font-manrope flex flex-col text-justify gap-8 leading-8 mt-15 '>
-            <p className='font-extrabold '>I am Oluwatobi Wilson, a frontend developer from Ondo State, Nigeria.</p>
+            <h1 className='font-extrabold '>I am Oluwatobi Wilson, a frontend developer from Ondo State, Nigeria.</h1>
             <p className=''>
               I build scalable, high-performance web applications that translate complex product ideas into clean, intuitive user interfaces. My work spans fintech, logistics, commerce, and education platforms—developing systems that balance user experience with real business needs.
             </p>

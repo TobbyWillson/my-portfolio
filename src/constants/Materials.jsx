@@ -1,4 +1,4 @@
-import { FaCss, FaGithub, FaHtml5, FaInstagram, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 
 import { Phone, Mail, MailPlus } from "lucide-react";
 
@@ -102,7 +102,7 @@ export const fieldConfigs = [
   },
   {
     name: "contactDetail",
-    dynamic: true, // 👈 controlled by preferredMethod
+    dynamic: true,
     error: "Preferred contact method detail is required.",
     customError: "Please enter your preferred method of contact details!",
   },
@@ -126,7 +126,7 @@ export const fieldConfigs = [
 
 export const methodConfigs = {
   phone: { label: "Phone Number", placeholder: "+234 800 000 0000", type: "tel" },
-  chat: { label: "WhatsApp", placeholder: "WhatsApp number", type: "text" },
+  chat: { label: "WhatsApp", placeholder: "WhatsApp number", type: "tel" },
   email: { label: null, placeholder: null, type: null },
 };
 
