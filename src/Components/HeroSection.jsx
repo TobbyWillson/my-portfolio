@@ -37,7 +37,7 @@ const HeroSection = () => {
                 A <span className='text-[#2563EB]'>&lt;&#47;</span>
                 <span className='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span>
                 <span className='text-[#2563EB]'>&gt;</span>
-<span className="inline-block min-h-[7rem] sm:min-h-[5rem] ml-2">
+<span className="inline-block min-h-[9rem] sm:min-h-[7rem] ml-2">
     <ReactTyped 
       strings={["based in Nigeria. I am focused on designing a very clear, trusted digital platforms."]} 
       typeSpeed={20} 
@@ -70,4 +70,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HeroSection; 
