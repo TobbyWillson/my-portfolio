@@ -49,3 +49,13 @@ input::-webkit-inner-spin-button {
   --color-bg-text: rgb(243, 244, 246);
   --color-border-gray: rgba(243, 244, 246, 0.2);
 }
+
+@keyframes squish {
+  0% { transform: scale(1, 1); opacity: 1; }
+  50% { transform: scale(0.6, 1.4); opacity: 0.5; } /* Tall and thin */
+  100% { transform: scale(0, 0); opacity: 0; }
+}
+
+.animate-squish {
+  animation: squish 0.25s ease-in-out forwards;
+}
