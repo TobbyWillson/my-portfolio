@@ -68,6 +68,7 @@ input::-webkit-inner-spin-button {
 }
 
 .animate-vanish {
+  transform-origin: right center;
   animation: vanish-squish 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   pointer-events: none; /* Prevents clicking during animation */
 }
