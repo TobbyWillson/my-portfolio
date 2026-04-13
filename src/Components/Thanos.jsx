@@ -7,7 +7,7 @@ const TelegramVanish = ({ text, onComplete }) => {
     if (!text) return;
 
     const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 30 : 40;
+    const particleCount = isMobile ? 25 : 40;
     const textWidth = Math.min(text.length * 10, 200);
 
     const newParticles = Array.from({ length: particleCount }).map(() => ({
