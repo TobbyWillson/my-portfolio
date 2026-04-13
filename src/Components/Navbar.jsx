@@ -109,7 +109,7 @@ const Navbar = () => {
               <HashLink smooth to={nav.http}>
                 {/* {nav.title} */}
                 <div>{nav.title}</div>
-              <HashLink
+              </HashLink>
             </div>
           ))}
 
