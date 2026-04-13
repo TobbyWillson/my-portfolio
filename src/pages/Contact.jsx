@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { methodConfigs, methods } from "../constants/Materials";
+import TelegramVanish from "../Components/Thanos";
 
 const EMAIL_ADDRESS = "a586447a37250038ed325c65a0bd0c19";
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL_ADDRESS}`;
@@ -188,6 +189,13 @@ const Contact = () => {
     }));
   };
 
+  const [snapText, setSnapText] = useState({ name: "", text: "" });
+
+  const triggerVanish = (fieldName) => {
+    setSnapText({ name: fieldName, text: formData[fieldName] });
+    handleClear(fieldName);
+  };
+
   return (
     <section className='my-30 max-w-3xl mx-auto' id='contact'>
       <div className='mb-14 text-center flex flex-col gap-4 border-b border-border-gray pb-5 rounded-lg'>
@@ -200,7 +208,9 @@ const Contact = () => {
           {/* Full Name Input field and label */}
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Full Name</span>
-            <div className='relative flex items-center'>
+            <div className='relative flex items-center overflow-hidden'>
+              {snapText.name === "fullName" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
+
               <input
                 type='text'
                 name='fullName'
@@ -213,7 +223,7 @@ const Contact = () => {
               />
 
               {formData.fullName && !isSending && (
-                <button type='button' onClick={() => handleClear("fullName")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors' aria-label='Clear input'>
+                <button type='button' onClick={() => triggerVanish("fullName")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors' aria-label='Clear input'>
                   {xButton}
                 </button>
               )}
@@ -233,7 +243,8 @@ const Contact = () => {
           {/* Email Address Input Field and Label */}
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Email Address</span>
-            <div className='relative flex items-center'>
+            <div className='relative flex items-center overflow-hidden'>
+              {snapText.name === "email" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
               <input
                 type='email'
                 name='email'
@@ -245,7 +256,7 @@ const Contact = () => {
                 className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && (formData.email.length < 1 || isEmailInvalid) ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
               />
               {formData.email && !isSending && (
-                <button type='button' onClick={() => handleClear("email")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
+                <button type='button' onClick={() => triggerVanish("email")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
                   {xButton}
                 </button>
               )}
@@ -281,7 +292,8 @@ const Contact = () => {
         {formData.preferredMethod !== "email" && (
           <label className='flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-300'>
             <span className='text-sm font-medium'>{methodConfigs[formData.preferredMethod].label}</span>
-            <div className='relative flex items-center'>
+            <div className='relative flex items-center overflow-hidden'>
+              {snapText.name === "contactDetail" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
               <input
                 type={methodConfigs[formData.preferredMethod].type}
                 inputMode={methodConfigs[formData.preferredMethod].inputMode}
@@ -294,7 +306,7 @@ const Contact = () => {
                 className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && isPhoneInvalid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
               />
               {formData.contactDetail && !isSending && (
-                <button type='button' onClick={() => handleClear("contactDetail")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
+                <button type='button' onClick={() => triggerVanish("contactDetail")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
                   {xButton}
                 </button>
               )}
@@ -315,7 +327,8 @@ const Contact = () => {
         {/* Purpose of Contact*/}
         <label className='flex flex-col gap-2'>
           <span className='text-sm font-medium text-bg-text dark:text-white'>Purpose</span>
-          <div className='relative flex items-center'>
+          <div className='relative flex items-center overflow-hidden'>
+            {snapText.name === "purpose" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
             <input
               type='text'
               name='purpose'
@@ -327,7 +340,7 @@ const Contact = () => {
               className={`w-full rounded-lg border text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none transition-colors ${feedback.type === "error" && formData.purpose.length < 10 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
             />
             {formData.purpose && !isSending && (
-              <button type='button' onClick={() => handleClear("purpose")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
+              <button type='button' onClick={() => triggerVanish("purpose")} className='absolute right-3 text-gray-400 hover:text-red-500 transition-colors'>
                 {xButton}
               </button>
             )}
@@ -347,6 +360,7 @@ const Contact = () => {
         {/* Message Field */}
         <label className='flex flex-col gap-2'>
           <span className='text-sm font-medium text-bg-text dark:text-white'>Message</span>
+
           <textarea
             name='message'
             rows='6'
