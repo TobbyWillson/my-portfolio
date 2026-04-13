@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useMemo } from "react";
 
 const ThemeContext = createContext();
 
@@ -15,6 +15,8 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const root = document.documentElement;
 
+    root.classList.add("theme-transitioning");
+
     if (isDark) {
       root.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -22,6 +24,10 @@ export const ThemeProvider = ({ children }) => {
       root.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
+
+    const timer = setTimeout(() => {
+      root.classList.remove("theme-transitioning");
+    }, 300);
   }, [isDark]);
 
   useEffect(() => {
@@ -31,7 +37,9 @@ export const ThemeProvider = ({ children }) => {
     return () => observer.disconnect();
   }, []);
 
-  return <ThemeContext.Provider value={{ isDark, setIsDark }}>{children}</ThemeContext.Provider>;
+  const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = () => useContext(ThemeContext);
