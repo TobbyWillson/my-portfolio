@@ -9,7 +9,7 @@
 body {
   font-family: "Poppins", "Bricolage Grotesque Variable", sans-serif;
   will-change: background-color;
-  transform: translateZ(0);
+  /* transform: translateZ(0); */
 }
 
 #contact,
