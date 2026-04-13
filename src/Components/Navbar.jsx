@@ -114,11 +114,7 @@ const Navbar = () => {
           ))}
 
           <div className='flex justify-center items-center py-2'>
-            <div
-              className={`flex justify-start transition-all duration-500 py-1 rounded-full border cursor-pointer
-        ${isDark ? "border-gray-400 pr-2 pl-9 bg-gray-600" : "border-amber-300 pl-2 pr-9 bg-gray-100"}`}
-              onClick={handleTheme}
-            >
+            <div className={`flex justify-start transition-all duration-500 py-1 rounded-full border cursor-pointer ${isDark ? "border-gray-400 pr-2 pl-9 bg-gray-600" : "border-amber-300 pl-2 pr-9 bg-gray-100"}`} onClick={handleTheme}>
               {isDark ? <MdDarkMode className='h-6 w-6 text-gray-100' /> : <MdLightMode className='h-6 w-6 text-amber-500' />}
             </div>
           </div>

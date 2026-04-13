@@ -6,7 +6,8 @@ const TelegramVanish = ({ text, onComplete }) => {
   useEffect(() => {
     if (!text) return;
 
-    const particleCount = 40;
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 25 : 40;
     const textWidth = Math.min(text.length * 10, 200);
 
     const newParticles = Array.from({ length: particleCount }).map(() => ({
