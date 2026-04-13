@@ -125,8 +125,8 @@ export const fieldConfigs = [
 ];
 
 export const methodConfigs = {
-  phone: { label: "Phone Number", placeholder: "+234 800 000 0000", type: "tel" },
-  chat: { label: "WhatsApp", placeholder: "WhatsApp number", type: "tel" },
+  phone: { label: "Phone Number", placeholder: "+234 800 000 0000", type: "tel", inputMode: "numeric" },
+  chat: { label: "WhatsApp", placeholder: "WhatsApp number", type: "tel", inputMode: "numeric" },
   email: { label: null, placeholder: null, type: null },
 };
 
@@ -134,4 +134,19 @@ export const methods = [
   { id: "phone", label: "Phone", icon: <Phone size={16} className='shrink-0' /> },
   { id: "email", label: "Email", icon: <Mail size={16} className='shrink-0' /> },
   { id: "chat", label: "WhatsApp", icon: <FaWhatsapp size={16} className='shrink-0' /> },
+];
+
+export const aboutConfigs = [
+  {
+    greeting: "Hi",
+    welcomeMsg: "You are welcome to read and understand more about me!",
+    aboutMe: "I am Oluwatobi Wilson, a frontend developer from Ondo State, Nigeria.",
+    whatIDo: "  I build scalable, high-performance web applications that translate complex product ideas into clean, intuitive user interfaces. My work spans fintech, logistics, commerce, and education platforms—developing systems that balance user experience with real business needs.",
+    expertise: "Beyond writing code, I think in systems. I approach frontend development as part of a larger product ecosystem, ensuring that interfaces are not only visually clear, but structured, maintainable, and scalable.",
+    whatIBuild: " From crypto platforms to logistics dashboards, accounting systems, and digital learning tools, I specialize in simplifying complex workflows into seamless user experiences.",
+    aprroachTitle: "My approach combines:",
+    approaches: ["Structured component design over isolated UI elements", "Business-aware development over surface-level styling", "Performance and usability over unnecessary complexity"],
+    whoIWorkWith: "I work closely with designers, engineers, and stakeholders to turn ideas into reliable, user-focused products that are ready to scale.",
+    involvement: "If it involves complex flows, real users, or high-impact systems, I’m interested.",
+  },
 ];

@@ -29,6 +29,12 @@ const Contact = () => {
     const isPhoneOrChat = formData.preferredMethod === "phone" || formData.preferredMethod === "chat";
 
     if (name === "contactDetail" && isPhoneOrChat) {
+      finalValue = value.replace(/[^\d+]/g, "");
+
+      if (finalValue.includes("+")) {
+        finalValue = "+" + finalValue.replace(/\+/g, "");
+      }
+
       if (value.length > 0 && !value.startsWith("+")) {
         finalValue = `+${value}`;
       }
@@ -278,6 +284,7 @@ const Contact = () => {
             <div className='relative flex items-center'>
               <input
                 type={methodConfigs[formData.preferredMethod].type}
+                inputMode={methodConfigs[formData.preferredMethod].inputMode}
                 name='contactDetail'
                 required
                 value={formData.contactDetail}
