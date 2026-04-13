@@ -106,10 +106,10 @@ const Navbar = () => {
         <div className={`py-5 rounded-lg ${document.documentElement.classList.contains("dark") ? "bg-[#272f3a] text-bg-text border-gray-600" : "bg-gray-100 border-gray-300"} transition-all duration-500 border `}>
           {navbarSection.map((nav, index) => (
             <div key={index} className='py-5 border-b border-border-gray last:border-none'>
-              <Link to={nav.http}>
+              <HashLink smooth to={nav.http}>
                 {/* {nav.title} */}
                 <div>{nav.title}</div>
-              </Link>
+              <HashLink
             </div>
           ))}
 
