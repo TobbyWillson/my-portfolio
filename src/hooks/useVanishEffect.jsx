@@ -60,7 +60,7 @@ export const useVanishEffect = (formData, handleClear) => {
 
   const handleInput = (e, fieldName) => {
     const { inputType } = e.nativeEvent;
-    const isDelete = inputType === "deleteContentBackward" || inputType === "deleteContentForward" || inputType === "deleteByCut" || inputType === "deleteByDrag" || inputType === "deleteContent";
+    const isDelete = inputType?.startsWith("delete");
 
     if (!isDelete) return;
     if (vanishCooldown.current) return;
@@ -69,18 +69,16 @@ export const useVanishEffect = (formData, handleClear) => {
     if (!prevValue) return;
 
     const nextValue = e.target.value;
-    const deletedCount = prevValue.length - nextValue.length;
     const isFullClear = nextValue.length === 0;
 
     let charIndex = null;
-    if (!isFullClear && deletedCount === 1) {
+    if (!isFullClear && prevValue.length - nextValue.length === 1) {
       for (let i = 0; i < prevValue.length; i++) {
         if (prevValue[i] !== nextValue[i]) {
           charIndex = i;
           break;
         }
       }
-
       if (charIndex === null) charIndex = nextValue.length;
     }
 
