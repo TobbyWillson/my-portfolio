@@ -13,8 +13,8 @@ body {
 }
 
 #contact,
-#work {
-  scroll-margin-top: 150px;
+#projects {
+  scroll-margin-top: 140px;
 }
 
 @theme {
