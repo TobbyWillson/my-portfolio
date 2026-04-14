@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { methodConfigs, methods } from "../constants/Materials";
 import TelegramVanish from "../Components/Thanos";
-import { useVanishEffect } from "../Components/useVanishEffect";
+import { useVanishEffect } from "../hooks/useVanishEffect";
 
 const EMAIL_ADDRESS = "a586447a37250038ed325c65a0bd0c19";
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL_ADDRESS}`;
