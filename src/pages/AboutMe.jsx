@@ -72,7 +72,7 @@ const AboutMe = () => {
                   {about.whatIBuild}
                 </p>
 
-                <p className='text-start sm:text-justify '>
+                <div className='text-start sm:text-justify '>
                   <span className='font-semibold'> {about.aprroachTitle}</span>
                   <ul className='ml-10 list-disc -indent-5 '>
                     {about.approaches.map((approach, index) => (
@@ -81,7 +81,7 @@ const AboutMe = () => {
                       </li>
                     ))}
                   </ul>
-                </p>
+                </div>
 
                 <p>{about.whoIWorkWith}</p>
                 <p>{about.involvement}</p>

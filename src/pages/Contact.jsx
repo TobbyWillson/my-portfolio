@@ -383,11 +383,11 @@ const Contact = () => {
               required
               value={formData.message}
               onInvalid={(e) => e.target.setCustomValidity("Please enter some messages to give more details!")}
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => (e.target.setCustomValidity(""), handleInput(e, "message"))}
               onChange={handleChange}
               ref={refs.message}
               onKeyDown={(e) => handleKeyDown(e, "message")}
-              onInput={(e) => handleInput(e, "message")}
+              // onInput={(e) => handleInput(e, "message")}
               placeholder='Share your project details...'
               disabled={isSending}
               className={`w-full min-w-0 block rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB] resize-y  ${feedback.type === "error" && formData.message.length < 15 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
