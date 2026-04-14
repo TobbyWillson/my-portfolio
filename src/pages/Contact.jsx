@@ -375,7 +375,7 @@ const Contact = () => {
             {handleVanishing("message")}
             <textarea
               name='message'
-              rows='6'
+              rows='10'
               required
               value={formData.message}
               onInvalid={(e) => e.target.setCustomValidity("Please enter some messages to give more details!")}
