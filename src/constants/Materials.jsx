@@ -27,7 +27,7 @@ const message = encodeURIComponent(`${checkTimeOfDay()}, Tobby!`);
 const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
 export const navbarSection = [
-  { title: "Work", http: "/#work" },
+  { title: "Projects", http: "/#projects" },
   { title: "About", http: "about" },
   { title: "Contact", http: "contact" },
 ];

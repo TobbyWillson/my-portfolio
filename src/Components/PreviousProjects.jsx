@@ -25,7 +25,7 @@ const PreviousProjects = () => {
   }, [location]);
 
   return (
-    <div id='work'>
+    <div id='projects'>
       <div className='mb-30'>
         <div className='mb-20 flex flex-col gap-4'>
           <p className='text-3xl sm:text-4xl text-center tracking-[4px]'>Selected Projects</p>

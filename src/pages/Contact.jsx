@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { methodConfigs, methods } from "../constants/Materials";
 import TelegramVanish from "../Components/Thanos";
+import { useVanishEffect } from "../Components/useVanishEffect";
 
 const EMAIL_ADDRESS = "a586447a37250038ed325c65a0bd0c19";
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL_ADDRESS}`;
@@ -189,11 +190,12 @@ const Contact = () => {
     }));
   };
 
-  const [snapText, setSnapText] = useState({ name: "", text: "" });
+  // Thanos Vanish Effect
+  const { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown } = useVanishEffect(formData, handleClear);
 
-  const triggerVanish = (fieldName) => {
-    setSnapText({ name: fieldName, text: formData[fieldName] });
-    handleClear(fieldName);
+  const handleVanishing = (fieldName) => {
+    if (vanishText?.name !== fieldName) return null;
+    return <TelegramVanish text={vanishText.text} charIndex={vanishText.charIndex} onComplete={handleVanishComplete} />;
   };
 
   return (
@@ -209,7 +211,7 @@ const Contact = () => {
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Full Name</span>
             <div className='relative flex items-center overflow-hidden'>
-              {snapText.name === "fullName" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
+              {handleVanishing("fullName")}
 
               <input
                 type='text'
@@ -217,6 +219,8 @@ const Contact = () => {
                 required
                 value={formData.fullName}
                 onChange={handleChange}
+                ref={refs.fullName}
+                onKeyDown={(e) => handleKeyDown(e, "fullName")}
                 placeholder='John Doe'
                 disabled={isSending}
                 className={`w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] ${feedback.type === "error" && isNameValid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -244,13 +248,15 @@ const Contact = () => {
           <label className='flex flex-col gap-2'>
             <span className='text-sm font-medium text-bg-text dark:text-white'>Email Address</span>
             <div className='relative flex items-center overflow-hidden'>
-              {snapText.name === "email" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
+              {handleVanishing("email")}
               <input
-                type='email'
+                type='text'
                 name='email'
                 required
                 value={formData.email}
                 onChange={handleChange}
+                ref={refs.email}
+                onKeyDown={(e) => handleKeyDown(e, "email")}
                 placeholder='johndoe@example.com'
                 disabled={isSending}
                 className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && (formData.email.length < 1 || isEmailInvalid) ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -293,7 +299,7 @@ const Contact = () => {
           <label className='flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-300'>
             <span className='text-sm font-medium'>{methodConfigs[formData.preferredMethod].label}</span>
             <div className='relative flex items-center overflow-hidden'>
-              {snapText.name === "contactDetail" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
+              {handleVanishing("contactDetail")}
               <input
                 type={methodConfigs[formData.preferredMethod].type}
                 inputMode={methodConfigs[formData.preferredMethod].inputMode}
@@ -301,6 +307,8 @@ const Contact = () => {
                 required
                 value={formData.contactDetail}
                 onChange={handleChange}
+                ref={refs.contactDetail}
+                onKeyDown={(e) => handleKeyDown(e, "contactDetail")}
                 placeholder={methodConfigs[formData.preferredMethod].placeholder}
                 disabled={isSending}
                 className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && isPhoneInvalid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -328,13 +336,15 @@ const Contact = () => {
         <label className='flex flex-col gap-2'>
           <span className='text-sm font-medium text-bg-text dark:text-white'>Purpose</span>
           <div className='relative flex items-center overflow-hidden'>
-            {snapText.name === "purpose" && <TelegramVanish text={snapText.text} onComplete={() => setSnapText({ name: "", text: "" })} />}
+            {handleVanishing("purpose")}
             <input
               type='text'
               name='purpose'
               required
               value={formData.purpose}
               onChange={handleChange}
+              ref={refs.purpose}
+              onKeyDown={(e) => handleKeyDown(e, "purpose")}
               placeholder='Website redesign, Collaboration...'
               disabled={isSending}
               className={`w-full rounded-lg border text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none transition-colors ${feedback.type === "error" && formData.purpose.length < 10 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -361,18 +371,23 @@ const Contact = () => {
         <label className='flex flex-col gap-2'>
           <span className='text-sm font-medium text-bg-text dark:text-white'>Message</span>
 
-          <textarea
-            name='message'
-            rows='6'
-            required
-            value={formData.message}
-            onInvalid={(e) => e.target.setCustomValidity("Please enter some messages to give more details!")}
-            onInput={(e) => e.target.setCustomValidity("")}
-            onChange={handleChange}
-            placeholder='Share your project details...'
-            disabled={isSending}
-            className={`rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB] resize-y  ${feedback.type === "error" && formData.message.length < 15 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
-          />
+          <div className='relative overflow-hidden'>
+            {handleVanishing("message")}
+            <textarea
+              name='message'
+              rows='6'
+              required
+              value={formData.message}
+              onInvalid={(e) => e.target.setCustomValidity("Please enter some messages to give more details!")}
+              onInput={(e) => e.target.setCustomValidity("")}
+              onChange={handleChange}
+              ref={refs.message}
+              onKeyDown={(e) => handleKeyDown(e, "message")}
+              placeholder='Share your project details...'
+              disabled={isSending}
+              className={`w-full min-w-0 block rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB] resize-y  ${feedback.type === "error" && formData.message.length < 15 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
+            />
+          </div>
 
           {feedback.type === "error" && (
             <div className='overflow-hidden'>
