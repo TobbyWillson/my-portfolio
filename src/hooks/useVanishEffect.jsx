@@ -58,6 +58,8 @@ export const useVanishEffect = (formData, handleClear) => {
     setVanishText({ name: fieldName, text: deletedChar, charIndex });
   };
 
+  const prevValueRef = useRef({});
+
   const handleInput = (e, fieldName) => {
     const { inputType } = e.nativeEvent;
     const isDelete = inputType?.startsWith("delete");
@@ -65,7 +67,7 @@ export const useVanishEffect = (formData, handleClear) => {
     if (!isDelete) return;
     if (vanishCooldown.current) return;
 
-    const prevValue = formData[fieldName];
+    const prevValue = prevValueRef.current[fieldName] ?? formData[fieldName];
     if (!prevValue) return;
 
     const nextValue = e.target.value;
@@ -94,5 +96,11 @@ export const useVanishEffect = (formData, handleClear) => {
     });
   };
 
-  return { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput };
+  const handleBeforeInput = (e, fieldName) => {
+    if (e.nativeEvent.inputType?.startsWith("delete")) {
+      prevValueRef.current[fieldName] = formData[fieldName];
+    }
+  };
+
+  return { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput, handleBeforeInput };
 };

@@ -191,7 +191,7 @@ const Contact = () => {
   };
 
   // Thanos Vanish Effect
-  const { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput } = useVanishEffect(formData, handleClear);
+  const { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput, handleBeforeInput } = useVanishEffect(formData, handleClear);
 
   const handleVanishing = (fieldName) => {
     if (vanishText?.name !== fieldName) return null;
@@ -220,6 +220,7 @@ const Contact = () => {
                 value={formData.fullName}
                 onChange={handleChange}
                 ref={refs.fullName}
+                onBeforeInput={(e) => handleBeforeInput(e, "fullName")}
                 onKeyDown={(e) => handleKeyDown(e, "fullName")}
                 onInput={(e) => handleInput(e, "fullName")}
                 placeholder='John Doe'
@@ -383,7 +384,10 @@ const Contact = () => {
               required
               value={formData.message}
               onInvalid={(e) => e.target.setCustomValidity("Please enter some messages to give more details!")}
-              onInput={(e) => (e.target.setCustomValidity(""), handleInput(e, "message"))}
+              onInput={(e) => {
+                e.target.setCustomValidity("");
+                handleInput(e, "message");
+              }}
               onChange={handleChange}
               ref={refs.message}
               onKeyDown={(e) => handleKeyDown(e, "message")}
