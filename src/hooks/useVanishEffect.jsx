@@ -68,11 +68,32 @@ export const useVanishEffect = (formData, handleClear) => {
     const prevValue = formData[fieldName];
     if (!prevValue) return;
 
+    const nextValue = e.target.value;
+    const deletedCount = prevValue.length - nextValue.length;
+    const isFullClear = nextValue.length === 0;
+
+    let charIndex = null;
+    if (!isFullClear && deletedCount === 1) {
+      for (let i = 0; i < prevValue.length; i++) {
+        if (prevValue[i] !== nextValue[i]) {
+          charIndex = i;
+          break;
+        }
+      }
+
+      if (charIndex === null) charIndex = nextValue.length;
+    }
+
     vanishCooldown.current = true;
     setTimeout(() => {
       vanishCooldown.current = false;
     }, 100);
-    setVanishText({ name: fieldName, text: prevValue, charIndex: null });
+
+    setVanishText({
+      name: fieldName,
+      text: isFullClear ? prevValue : prevValue[charIndex ?? nextValue.length],
+      charIndex: isFullClear ? null : charIndex,
+    });
   };
 
   return { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput };
