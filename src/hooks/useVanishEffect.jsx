@@ -3,13 +3,18 @@ import { useState, useRef } from "react";
 export const useVanishEffect = (formData, handleClear) => {
   const [vanishText, setVanishText] = useState(null);
   const vanishCooldown = useRef(false);
+  const fullNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const contactDetailRef = useRef(null);
+  const purposeRef = useRef(null);
+  const messageRef = useRef(null);
 
   const refs = {
-    fullName: useRef(null),
-    email: useRef(null),
-    contactDetail: useRef(null),
-    purpose: useRef(null),
-    message: useRef(null),
+    fullName: fullNameRef,
+    email: emailRef,
+    contactDetail: contactDetailRef,
+    purpose: purposeRef,
+    message: messageRef,
   };
 
   const triggerVanish = (fieldName) => {
@@ -18,9 +23,7 @@ export const useVanishEffect = (formData, handleClear) => {
     handleClear(fieldName);
   };
 
-  const handleVanishComplete = () => {
-    setVanishText(null);
-  };
+  const handleVanishComplete = () => setVanishText(null);
 
   const handleKeyDown = (e, fieldName) => {
     if (e.key !== "Backspace" && e.key !== "Delete") return;
@@ -38,7 +41,6 @@ export const useVanishEffect = (formData, handleClear) => {
 
     if (isAllSelected) {
       deletedChar = value;
-      charIndex = null;
     } else if (e.key === "Backspace" && selStart > 0) {
       deletedChar = value[selStart - 1];
       charIndex = selStart - 1;
@@ -53,9 +55,25 @@ export const useVanishEffect = (formData, handleClear) => {
     setTimeout(() => {
       vanishCooldown.current = false;
     }, 100);
-
     setVanishText({ name: fieldName, text: deletedChar, charIndex });
   };
 
-  return { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown };
+  const handleInput = (e, fieldName) => {
+    const { inputType } = e.nativeEvent;
+    const isDelete = inputType === "deleteContentBackward" || inputType === "deleteContentForward" || inputType === "deleteByCut" || inputType === "deleteByDrag" || inputType === "deleteContent";
+
+    if (!isDelete) return;
+    if (vanishCooldown.current) return;
+
+    const prevValue = formData[fieldName];
+    if (!prevValue) return;
+
+    vanishCooldown.current = true;
+    setTimeout(() => {
+      vanishCooldown.current = false;
+    }, 100);
+    setVanishText({ name: fieldName, text: prevValue, charIndex: null });
+  };
+
+  return { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput };
 };

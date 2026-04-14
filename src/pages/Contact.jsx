@@ -191,7 +191,7 @@ const Contact = () => {
   };
 
   // Thanos Vanish Effect
-  const { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown } = useVanishEffect(formData, handleClear);
+  const { vanishText, refs, triggerVanish, handleVanishComplete, handleKeyDown, handleInput } = useVanishEffect(formData, handleClear);
 
   const handleVanishing = (fieldName) => {
     if (vanishText?.name !== fieldName) return null;
@@ -221,6 +221,7 @@ const Contact = () => {
                 onChange={handleChange}
                 ref={refs.fullName}
                 onKeyDown={(e) => handleKeyDown(e, "fullName")}
+                onInput={(e) => handleInput(e, "fullName")}
                 placeholder='John Doe'
                 disabled={isSending}
                 className={`w-full rounded-lg border text-bg-text border-border-gray bg-white dark:bg-[#364153] pl-4 pr-10 py-3 outline-none focus:border-[#2563EB] ${feedback.type === "error" && isNameValid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -257,6 +258,7 @@ const Contact = () => {
                 onChange={handleChange}
                 ref={refs.email}
                 onKeyDown={(e) => handleKeyDown(e, "email")}
+                onInput={(e) => handleInput(e, "email")}
                 placeholder='johndoe@example.com'
                 disabled={isSending}
                 className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && (formData.email.length < 1 || isEmailInvalid) ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -309,6 +311,7 @@ const Contact = () => {
                 onChange={handleChange}
                 ref={refs.contactDetail}
                 onKeyDown={(e) => handleKeyDown(e, "contactDetail")}
+                onInput={(e) => handleInput(e, "contactDetail")}
                 placeholder={methodConfigs[formData.preferredMethod].placeholder}
                 disabled={isSending}
                 className={`w-full rounded-lg border border-border-gray bg-white text-bg-text dark:bg-[#364153] px-4 pr-10 py-3 outline-none focus:border-[#2563EB]  ${feedback.type === "error" && isPhoneInvalid ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -345,6 +348,7 @@ const Contact = () => {
               onChange={handleChange}
               ref={refs.purpose}
               onKeyDown={(e) => handleKeyDown(e, "purpose")}
+              onInput={(e) => handleInput(e, "purpose")}
               placeholder='Website redesign, Collaboration...'
               disabled={isSending}
               className={`w-full rounded-lg border text-bg-text bg-white dark:bg-[#364153] px-4 pr-10 py-3 outline-none transition-colors ${feedback.type === "error" && formData.purpose.length < 10 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
@@ -383,6 +387,7 @@ const Contact = () => {
               onChange={handleChange}
               ref={refs.message}
               onKeyDown={(e) => handleKeyDown(e, "message")}
+              onInput={(e) => handleInput(e, "message")}
               placeholder='Share your project details...'
               disabled={isSending}
               className={`w-full min-w-0 block rounded-lg border border-border-gray text-bg-text bg-white dark:bg-[#364153] px-4 py-3 outline-none focus:border-[#2563EB] resize-y  ${feedback.type === "error" && formData.message.length < 15 ? "border-red-500" : "border-border-gray focus:border-[#2563EB]"}`}
