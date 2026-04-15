@@ -26,7 +26,7 @@ const Footer = () => {
   const currentPage = useLocation().pathname;
 
   return (
-    <div id='contact'>
+    <div id=''>
       {/* Footer - AkinEbenezer */}
       {currentPage == "/contact" ? (
         ""
@@ -65,7 +65,7 @@ const Footer = () => {
           {/* onClick={setIsModalOpen} */}
 
           <Link to='/contact'>
-            <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-300 to-white px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB]  hover:text-[#192239] hover:scale-107 cursor-pointer gap-2'>Hire Me!</div>
+            <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-300 to-white px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB]  hover:text-[#192239] hover:scale-107 cursor-pointer gap-2'>Let's build something</div>
           </Link>
 
           {/* <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}

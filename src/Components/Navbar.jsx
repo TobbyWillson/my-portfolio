@@ -1,7 +1,5 @@
 import { navbarSection } from "../constants/Materials";
 
-import { Menu, X } from "lucide-react";
-
 import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
 
@@ -65,6 +63,17 @@ const Navbar = () => {
     setIsDark(!isDark);
   };
 
+  // Hamburger Button on Mobile
+  const HamburgerButton = () => (
+    <>
+      <div className={`h-[2px] w-3 bg-current rounded-full transition-all duration-500 ease-in-out ${menuBar ? "-rotate-45 w-5 translate-y-[7px]" : ""} `} />
+
+      <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-500 ease-in-out ${menuBar ? "opacity-0" : "opacity-100"} `} />
+
+      <div className={`h-[2px] w-3 bg-current rounded-full transition-all duration-500 ease-in-out ${menuBar ? "rotate-45 w-5 -translate-y-[7px]" : ""} `} />
+    </>
+  );
+
   return (
     <div className={`px-10 py-10 min-[570px]:px-15 sm:px-10 fixed inset-x-0 z-50 transition-all duration-700 ${scrolled ? "shadow-lg dark:shadow-gray-50/10 bg-background/60  backdrop-blur-lg" : ""}   `}>
       <div className='max-w-7xl mx-auto  flex justify-between items-center relative '>
@@ -85,11 +94,7 @@ const Navbar = () => {
         </div>
 
         <div className={`sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group  ${isDark ? "text-[#ececec] hover:text-white" : "text-[gray] hover:text-black"} `} onClick={handleMenu}>
-          <div className={`h-[2px] w-3 bg-current rounded-full transition-all duration-500 ease-in-out ${menuBar ? "-rotate-45 w-5 translate-y-[7px]" : ""} `} />
-
-          <div className={`h-[2px] w-5 bg-current rounded-full my-[5px] transition-all duration-500 ease-in-out ${menuBar ? "opacity-0" : "opacity-100"} `} />
-
-          <div className={`h-[2px] w-3 bg-current rounded-full transition-all duration-500 ease-in-out ${menuBar ? "rotate-45 w-5 -translate-y-[7px]" : ""} `} />
+          {HamburgerButton()}
         </div>
 
         <div
@@ -103,7 +108,7 @@ const Navbar = () => {
 
       <div ref={menuRef} className={`sm:hidden absolute inset-x-0 mx-auto w-[90%] rounded-lg text-center shadow-md transition-all duration-700 ease-in-out ${menuBar ? "top-30 " : "top-30 -left-300"} `}>
         {/* Mobile Menu Bar */}
-        <div className={`py-5 rounded-lg ${document.documentElement.classList.contains("dark") ? "bg-[#272f3a] text-bg-text border-gray-600" : "bg-gray-100 border-gray-300"} transition-all duration-500 border `}>
+        <div className={`py-5 rounded-lg ${isDark ? "bg-[#272f3a] text-bg-text border-gray-600" : "bg-gray-100 border-gray-300"} transition-all duration-500 border `}>
           {navbarSection.map((nav, index) => (
             <div key={index} className='py-5 border-b border-border-gray last:border-none'>
               <HashLink smooth to={nav.http}>
