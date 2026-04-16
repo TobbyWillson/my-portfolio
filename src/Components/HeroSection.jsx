@@ -41,7 +41,7 @@ const HeroSection = () => {
     setTimeout(() => {
       setIsHired(true);
       setSnapText({ name: "", text: "" });
-    }, 500);
+    }, 800);
 
     setTimeout(() => {
       navigate("/contact");
