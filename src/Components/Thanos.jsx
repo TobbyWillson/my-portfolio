@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const TelegramVanish = ({ text, charIndex = null, onComplete }) => {
+const TelegramVanish = ({ text, charIndex = null, onComplete, containerRef = null }) => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
@@ -10,16 +10,21 @@ const TelegramVanish = ({ text, charIndex = null, onComplete }) => {
     const charWidth = 10;
 
     const isFullWidth = charIndex === null;
-    const particleCount = isFullWidth ? (isMobile ? 25 : 40) : isMobile ? 12 : 20;
-    const originX = isFullWidth ? null : 16 + charIndex * charWidth;
-    const spreadWidth = isFullWidth ? Math.min(text.length * charWidth, 200) : charWidth;
+    const containerWidth = containerRef?.current ? containerRef.current.getBoundingClientRect().width : Math.min(text.length * charWidth, window.innerWidth - 32);
+
+    // const particleCount = isFullWidth ? (isMobile ? 25 : 40) : isMobile ? 12 : 20;
+    const baseCount = isFullWidth ? Math.floor(containerWidth / 6) : isMobile ? 12 : 20;
+    const particleCount = isMobile ? Math.min(baseCount, 35) : Math.min(baseCount, 120);
+
+    const spreadWidth = isFullWidth ? containerWidth : charWidth;
+    const originX = isFullWidth ? 0 : 16 + charIndex * charWidth;
 
     const newParticles = Array.from({ length: particleCount }).map(() => ({
       id: Math.random(),
       x: isFullWidth ? 16 + Math.random() * spreadWidth : originX + (Math.random() - 0.5) * spreadWidth,
-      y: 18 + Math.random() * 10,
-      vx: (Math.random() - 0.5) * (isFullWidth ? 40 : 30),
-      vy: -Math.random() * (isFullWidth ? 60 : 40),
+      y: isFullWidth ? Math.random() * 28 : 18 + Math.random() * 10,
+      vx: (Math.random() - 0.5) * (isFullWidth ? 50 : 30),
+      vy: -Math.random() * (isFullWidth ? 70 : 40),
       size: Math.random() * 3 + 1,
     }));
 

@@ -3,7 +3,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import { useTheme } from "./ThemeContext";
 
 import { ReactTyped } from "react-typed";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import TobbyLogoBlack from "../assets/images/tobby-logo-black.png";
 import TobbyLogoWhite from "../assets/images/tobby-logo-white.png";
@@ -28,49 +28,65 @@ const HeroSection = () => {
   }, []);
 
   // Let's build something animation
+  const urgencyRef = useRef(null);
+
   const [isHired, setIsHired] = useState(false);
   const [snapText, setSnapText] = useState({ name: "", text: "" });
   const navigate = useNavigate();
 
+  const urgencyText = "Have a project that needs to go live? I'm just one click away from turning your designs into reality.";
   const handleHireMe = () => {
-    const urgencyText = "Have a project that needs to go live? I'm just one click away from turning your designs into reality.";
-
     setSnapText({ name: "urgency", text: urgencyText });
 
     setTimeout(() => {
       setIsHired(true);
       setSnapText({ name: "", text: "" });
-    }, 800);
+    }, 500);
 
     setTimeout(() => {
       navigate("/contact");
-    }, 3500);
+    }, 4500);
 
-    setTimeout(() => {
-      setIsHired(false);
-    }, 5000);
+    // setTimeout(() => {
+    //   setIsHired(false);
+    // }, 5000);
   };
+
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (!isHired) return;
+
+    const t0 = setTimeout(() => setStep(1), 50);
+    const t1 = setTimeout(() => setStep(0), 1500);
+    const t2 = setTimeout(() => setStep(2), 2000);
+    return () => {
+      clearTimeout(t0);
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [isHired]);
 
   return (
     <div className=''>
       <div className='mt-25 max-[403px]:mt-20 sm:mt-35 '>
         <div className='flex flex-wrap items-center '>
-          <div className='w-full lg:w-1/2 flex flex-col gap-9 max-[403px]:gap-6'>
+          <div className='w-full lg:w-1/2 flex flex-col gap-9 '>
             <div className='max-[373px]:text-[28px] text-[30px]  max-sm:leading-13 sm:text-[42px] xl:text-5xl md:leading-15 text-center lg:text-start '>
               <p className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-2'>Hey, Nice to meet you! </p>
               <p>I'm Oluwatobi Wilson.</p>
               <p className='text-[20px] max-sm:leading-8 sm:text-[24px] md:leading-12 lg:leading-10 mt-5 min-[866px]:mx-10 min-[940px]:mx-20 min-[1024px]:mx-auto'>
                 <span className='relative inline-block '>
                   <span className='invisible' aria-hidden='true'>
-                    A frontend developer based in Nigeria. I specialize in building clean, accessible, and high-performance digital platforms that users love.
+                    A frontend developer based in Nigeria. I specialize in building clean, and high-performance digital platforms that users love.
                   </span>
 
                   <span className='absolute top-0 left-0 w-full'>
                     <ReactTyped
                       strings={[
-                        "A <span class='text-[#2563EB]'>&lt;/</span><span class='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span><span class='text-[#2563EB]'>&gt;</span> based in Nigeria. I specialize in building clean, accessible, and high-performance digital platforms that users love.",
+                        "A <span class='text-[#2563EB]'>&lt;/</span><span class='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer</span><span class='text-[#2563EB]'>&gt;</span> based in Nigeria. I specialize in building clean, and high-performance digital platforms that users love.",
                       ]}
-                      typeSpeed={30}
+                      typeSpeed={40}
                       contentType='html'
                     />
                   </span>
@@ -83,23 +99,41 @@ const HeroSection = () => {
                   <div className='relative w-full'>
                     {snapText.name === "urgency" && (
                       <div className='text-bg-text dark:text-white'>
-                        <TelegramVanish text={snapText.text} onComplete={() => {}} />
+                        <TelegramVanish text={snapText.text} containerRef={urgencyRef} onComplete={() => {}} />
                       </div>
                     )}
 
-                    <p className={`min-[866px]:mx-20 min-[940px]:mx-30 min-[1024px]:mx-auto  transition-all duration-700 ease-out transform  ${snapText.name === "urgency" ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`}>
-                      Do you have a project that needs to go live? I'm just one click away from turning your designs into reality.
+                    <p className={`min-[866px]:mx-20 min-[940px]:mx-30 min-[1024px]:mx-auto  transition-all duration-700 ease-out transform  ${snapText.name === "urgency" ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`} ref={urgencyRef}>
+                      {urgencyText}
                     </p>
                   </div>
                 ) : (
-                  <div className='flex flex-col'>
-                    <p className='mb-1'>Forwarding you to the contact page.</p>
+                  isHired && (
+                    <div className='relative flex flex-col w-full'>
+                      <p
+                        className='absolute inset-0 transition-all duration-300 ease-in-out'
+                        style={{
+                          opacity: step === 1 ? 1 : 0,
+                          transform: step === 1 ? "translateY(0)" : "translateY(-12px)",
+                          pointerEvents: "none",
+                        }}
+                      >
+                        Forwarding you to the contact page.
+                      </p>
 
-                    <div className='flex flex items-center justify-center lg:text-start text-center'>
-                      <p className='pr-3'>Loading contact page</p>
-                      <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin'></span>
+                      <div
+                        className='absolute inset-0 flex items-center lg:justify-start justify-center transition-all duration-300 ease-in-out'
+                        style={{
+                          opacity: step === 2 ? 1 : 0,
+                          transform: step === 2 ? "translateY(0)" : "translateY(12px)",
+                          pointerEvents: "none",
+                        }}
+                      >
+                        <p className='pr-3'>Loading contact page</p>
+                        <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin'></span>
+                      </div>
                     </div>
-                  </div>
+                  )
                 )}
               </div>
             </div>
