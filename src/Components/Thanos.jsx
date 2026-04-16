@@ -16,7 +16,7 @@ const TelegramVanish = ({ text, charIndex = null, onComplete, containerRef = nul
 
     // const particleCount = isFullWidth ? (isMobile ? 25 : 40) : isMobile ? 12 : 20;
     const baseCount = isFullWidth ? Math.floor(containerWidth / 6) : isMobile ? 12 : 20;
-    const mobileCap = isFullWidth ? (hasContainer ? 60 : 25) : 12; // 60 for all texts on Mobile with containerRef, 25 with no ref, 12 for single chars.
+    const mobileCap = isFullWidth ? (hasContainer ? 45 : 25) : 12; // 60 for all texts on Mobile with containerRef, 25 with no ref, 12 for single chars.
     const desktopCap = isFullWidth ? (hasContainer ? 120 : 40) : 20;
     const particleCount = isMobile ? Math.min(baseCount, mobileCap) : Math.min(baseCount, desktopCap);
 

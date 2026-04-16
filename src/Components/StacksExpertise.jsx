@@ -35,7 +35,7 @@ const StacksExpertise = () => {
               className={`scroll-item-experience ${isDark ? "bg-[#272f3a]" : "bg-gray-100 hover:bg-gray-50"} px-7  py-5 rounded-xl shadow-md dark:shadow-gray-50/10 hover:scale-107 dark:hover:bg-[#2f3844] transition-all duration-300`}
             >
               <div className='flex items-center gap-6'>
-                <div className='text-[20px] lg:text-2xl bg-linear-to-r from-white to-gray-300 dark:from-gray-400 dark:to-gray-600 h-10 w-10 flex justify-center items-center rounded-full'>{experience.logo}</div>
+                <div className={` lg:text-2xl bg-linear-to-r from-white to-gray-300 dark:from-gray-400 dark:to-gray-600 ${experience.title === "Git" ? "text-[28px]" : "text-[20px]"} h-10 w-10 flex justify-center items-center rounded-full`}>{experience.logo}</div>
                 <div className='flex flex-col gap-3'>
                   <h1 className='text-[28px] lg:text-[34px]'>{experience.title}</h1>
                   <p>{experience.years}</p>

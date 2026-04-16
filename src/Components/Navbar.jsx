@@ -93,7 +93,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <button className={`sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group  ${isDark ? "text-[#ececec] hover:text-white" : "text-[gray] hover:text-black"} `} onClick={handleMenu}>
+        <button className={`sm:hidden flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer group  ${isDark ? "text-[#ececec] hover:text-white" : "text-[gray] hover:text-black"} `} onClick={handleMenu} aria-expanded={menuBar} aria-label={menuBar ? "Close menu" : "Open menu"}>
           {HamburgerButton()}
         </button>
 

@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
+import { FaGitAlt, FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 
 import { Phone, Mail, MailPlus } from "lucide-react";
 
@@ -36,6 +36,7 @@ export const experiences = [
   { title: "JavaScript", years: "3 Years Experience", logo: <SiJavascript /> },
   { title: "React", years: "2 Years Experience", logo: <FaReact /> },
   { title: "Tailwind", years: "1 Year Experience", logo: <SiTailwindcss /> },
+  { title: "Git", years: "3 Years Experience", logo: <FaGitAlt /> },
   { title: "TypeScript", years: "3 Months Experience", logo: <SiTypescript /> },
   { title: "Node.js", years: "1 Year Experience", logo: <SiNodedotjs /> },
   { title: "MongoDB", years: "1 Year Experience", logo: <SiMongodb /> },
