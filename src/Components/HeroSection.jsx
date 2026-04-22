@@ -69,7 +69,7 @@ const HeroSection = () => {
 
   return (
     <div className=''>
-      <div className='mt-25 max-[403px]:mt-20 sm:mt-35 '>
+      <div className='mt-25  sm:mt-35 '>
         <div className='flex flex-wrap items-center '>
           <div className='w-full lg:w-1/2 flex flex-col gap-9 '>
             <div className='max-[373px]:text-[28px] text-[30px]  max-sm:leading-13 sm:text-[42px] xl:text-5xl md:leading-15 text-center lg:text-start '>
@@ -93,7 +93,8 @@ const HeroSection = () => {
                 </span>
               </p>
             </div>
-            <div className='flex flex-col gap-6'>
+
+            <div className=''>
               <div className='relative min-h-[80px] flex items-center justify-center lg:text-start text-center overflow-hidden'>
                 {!isHired ? (
                   <div className='relative w-full'>
@@ -103,7 +104,7 @@ const HeroSection = () => {
                       </div>
                     )}
 
-                    <p className={`min-[866px]:mx-20 min-[940px]:mx-30 min-[1024px]:mx-auto  transition-all duration-700 ease-out transform  ${snapText.name === "urgency" ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`} ref={urgencyRef}>
+                    <p className={`min-[866px]:mx-20 min-[940px]:mx-30 min-[1024px]:mx-auto  transition-all duration-700 ease-out transform pt-4 ${snapText.name === "urgency" ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`} ref={urgencyRef}>
                       {urgencyText}
                     </p>
                   </div>
@@ -118,7 +119,7 @@ const HeroSection = () => {
                           pointerEvents: "none",
                         }}
                       >
-                        Forwarding you to the contact page.
+                        Forwarding you to the contact page...{" "}
                       </p>
 
                       <div
@@ -129,7 +130,7 @@ const HeroSection = () => {
                           pointerEvents: "none",
                         }}
                       >
-                        <p className='pr-3'>Loading contact page</p>
+                        <p className='pr-2'>Loading contact page</p>
                         <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin'></span>
                       </div>
                     </div>

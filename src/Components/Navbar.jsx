@@ -106,9 +106,14 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div ref={menuRef} className={`sm:hidden absolute inset-x-0 mx-auto w-[90%] rounded-lg text-center shadow-md transition-all duration-700 ease-in-out ${menuBar ? "top-30 " : "top-30 -left-300"} `}>
+      {/* "top-30 " : "top-30 -left-300" */}
+      {/*  <div ref={menuRef} className={`sm:hidden absolute inset-x-0 mx-auto w-[90%] rounded-lg text-center shadow-md transition-all duration-700 ease-in-out ${menuBar ? "opacity-100 translate-x-0 translate-y-11 pointer-events-auto" : "opacity-0 -translate-x-50 translate-y-11  pointer-events-none"} `}>
+       
+        <div className='py-5 rounded-lg bg-gray-100 border-gray-300 dark:bg-[#272f3a] dark:text-bg-text dark:border-gray-600  transition-all duration-500 border '></div> */}
+
+      <div ref={menuRef} className={`sm:hidden absolute inset-x-0 mx-auto w-[90%] rounded-lg text-center shadow-md transition-all duration-700 ease-in-out ${menuBar ? "opacity-100 translate-x-0 translate-y-11 pointer-events-auto" : "opacity-0 -translate-x-70 translate-y-11  pointer-events-none"} `}>
         {/* Mobile Menu Bar */}
-        <div className={`py-5 rounded-lg ${isDark ? "bg-[#272f3a] text-bg-text border-gray-600" : "bg-gray-100 border-gray-300"} transition-all duration-500 border `}>
+        <div className='py-5 rounded-lg bg-gray-100 border-gray-300 dark:bg-[#272f3a] text-bg-text dark:border-gray-600  transition-all duration-500 border '>
           {navbarSection.map((nav, index) => (
             <div key={index} className='py-5 border-b border-border-gray last:border-none'>
               <HashLink smooth to={nav.http}>
