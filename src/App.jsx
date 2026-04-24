@@ -1,4 +1,4 @@
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from "react-router-dom";
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet, useLocation } from "react-router-dom";
 import "@fontsource-variable/bricolage-grotesque";
 import "@fontsource/poppins";
 
@@ -11,15 +11,48 @@ import NotFound from "./pages/NotFound";
 
 import { useTheme } from "./Components/ThemeContext";
 import ScrollToTop from "./Components/ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const RootLayout = () => {
   const date = new Date();
   const year = date.getFullYear();
 
   const isDark = useTheme();
+
+  const pathName = useLocation().pathname;
+
+  // Define dynamic content based on the path
+  const pathTitle = () => {
+    if (pathName === "/" || pathName === "/home") {
+      return "Tobby Willson | Portofilio";
+    } else if (pathName === "/about") {
+      return "About Me | Portfolio";
+    } else if (pathName === "/contact") {
+      return "Contact Me | Portfolio";
+    } else {
+      return "Tobby Willson | Portfolio";
+    }
+  };
+
+  const pathDesc = () => {
+    if (pathName === "/" || pathName === "/home") {
+      return "This is the official portfolio of Tobby Willson, a frontend developer based in Nigeria. Showcasing his amazing skills in various frontend tools and also his past projects.";
+    } else if (pathName === "/about") {
+      return "This is the page where you get to know more about Tobby Willson, what he does, and how well he does it.";
+    } else if (pathName === "/contact") {
+      return "This is the contact page Tobby Willson's Portfolio website where you get in touch with him on various reasons such as Website design, collaboration, etc. ";
+    } else {
+      return "This is the official portfolio of Tobby Willson, a frontend developer based in Nigeria. Showcasing his amazing skills in various frontend tools and also his past projects.";
+    }
+  };
+
   return (
     <>
       <ScrollToTop />
+      <Helmet>
+        <title>{pathTitle()}</title>
+        <meta name='description' content={pathDesc()} />
+      </Helmet>
       {/* <ScrollToTop /> */}
       <div className='select-none'>
         <header className=''>

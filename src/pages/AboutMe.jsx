@@ -41,6 +41,7 @@ const AboutMe = () => {
 
   return (
     <div className=''>
+      <title>About Me | Portfolio</title>
       {/* Current Page Bar */}
 
       <div className=' '>

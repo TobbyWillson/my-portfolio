@@ -69,9 +69,9 @@ const HeroSection = () => {
 
   return (
     <div className=''>
-      <div className='mt-25  sm:mt-35 '>
+      <div className='mt-23  sm:mt-35 '>
         <div className='flex flex-wrap items-center '>
-          <div className='w-full lg:w-1/2 flex flex-col gap-9 '>
+          <div className='w-full lg:w-1/2 flex flex-col gap-9 max-[362px]:gap-5'>
             <div className='max-[373px]:text-[28px] text-[30px]  max-sm:leading-13 sm:text-[42px] xl:text-5xl md:leading-15 text-center lg:text-start '>
               <p className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-2'>Hey, Nice to meet you! </p>
               <p>I'm Oluwatobi Wilson.</p>
