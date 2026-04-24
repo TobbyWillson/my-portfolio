@@ -82,6 +82,29 @@ const Navbar = () => {
     setActive(location.pathname + location.hash);
   }, [location]);
 
+  useEffect(() => {
+    const observers = navbarSection.map(({ id, http }) => {
+      const element = document.getElementById(id);
+      if (!element) return null;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActive(http);
+          } else {
+            setActive((prev) => (prev === http ? "" : prev));
+          }
+        },
+        { threshold: 0.3 },
+      );
+
+      observer.observe(element);
+      return observer;
+    });
+
+    return () => observers.forEach((o) => o?.disconnect());
+  }, [location.pathname]);
+
   return (
     <section className={`px-10 py-10 min-[570px]:px-15 sm:px-10 fixed inset-x-0 z-50 transition-all duration-700 ${scrolled ? "shadow-lg dark:shadow-gray-50/10 bg-background/60  backdrop-blur-lg" : ""}   `}>
       <nav className='max-w-7xl mx-auto  flex justify-between items-center relative '>
@@ -120,7 +143,7 @@ const Navbar = () => {
         {/* Mobile Menu Bar */}
         <div className=' rounded-lg bg-gray-100 border-gray-300 dark:bg-[#272f3a] text-bg-text dark:border-gray-600 transition-all duration-500 border '>
           {navbarSection.map((nav, index) => (
-            <div key={index} className={`py-5 border-b border-border-gray last:border-none ${active === nav.http ? "bg-gray-200 first:rounded-t-lg text-black dark:bg-gray-600 dark:text-white" : ""} `} onClick={() => setActive(nav.http)}>
+            <div key={index} className={`py-6 border-b border-border-gray last:border-none ${active === nav.http ? "bg-gray-200 transition-all duration-500 first:rounded-t-lg text-black dark:bg-gray-600 dark:text-white" : ""} `} onClick={() => setActive(nav.http)}>
               <HashLink smooth to={nav.http}>
                 {/* {nav.title} */}
                 <div>{nav.title}</div>

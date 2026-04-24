@@ -40,7 +40,7 @@ const AboutMe = () => {
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
-    <div className=''>
+    <section className='' id='about'>
       {/* Current Page Bar */}
 
       <div className=' '>
@@ -111,7 +111,7 @@ const AboutMe = () => {
           {/* <p className={`${downloadMessage ? "absolute -translate-y-45 bg-gray-900 text-white p-4 rounded-xl shadow-2xl  transition-all duration-700" : ""} `}>{downloadMessage}</p> */}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
