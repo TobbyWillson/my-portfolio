@@ -27,9 +27,9 @@ const message = encodeURIComponent(`${checkTimeOfDay()}, Tobby!`);
 const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
 export const navbarSection = [
-  { title: "Projects", http: "/#projects" },
-  { title: "About", http: "about" },
-  { title: "Contact", http: "contact" },
+  { title: "Projects", http: "/#projects", state: "active" },
+  { title: "About", http: "/about", state: "" },
+  { title: "Contact", http: "/contact", state: "" },
 ];
 
 export const experiences = [
@@ -82,48 +82,48 @@ export const previousProjects = [
   },
 ];
 
-export const fieldConfigs = [
-  {
-    name: "fullName",
-    label: "Full Name",
-    type: "text",
-    placeholder: "John Doe",
-    error: "Full Name is required.",
-    customError: "Please enter your full name!",
-    grid: true,
-  },
-  {
-    name: "email",
-    label: "Email Address",
-    type: "email",
-    placeholder: "johndoe@example.com",
-    error: "Email Address is required.",
-    customError: "Please enter your Email Address!",
-    grid: true,
-  },
-  {
-    name: "contactDetail",
-    dynamic: true,
-    error: "Preferred contact method detail is required.",
-    customError: "Please enter your preferred method of contact details!",
-  },
-  {
-    name: "purpose",
-    label: "Purpose",
-    type: "text",
-    placeholder: "Website redesign, Collaboration...",
-    error: "Purpose of message is required.",
-    customError: "Please let us know your purpose of contacting us!",
-  },
-  {
-    name: "message",
-    label: "Message",
-    type: "textarea",
-    placeholder: "Share your project details...",
-    error: "Message is required.",
-    customError: "Please enter some messages to give more details!",
-  },
-];
+// export const fieldConfigs = [
+//   {
+//     name: "fullName",
+//     label: "Full Name",
+//     type: "text",
+//     placeholder: "John Doe",
+//     error: "Full Name is required.",
+//     customError: "Please enter your full name!",
+//     grid: true,
+//   },
+//   {
+//     name: "email",
+//     label: "Email Address",
+//     type: "email",
+//     placeholder: "johndoe@example.com",
+//     error: "Email Address is required.",
+//     customError: "Please enter your Email Address!",
+//     grid: true,
+//   },
+//   {
+//     name: "contactDetail",
+//     dynamic: true,
+//     error: "Preferred contact method detail is required.",
+//     customError: "Please enter your preferred method of contact details!",
+//   },
+//   {
+//     name: "purpose",
+//     label: "Purpose",
+//     type: "text",
+//     placeholder: "Website redesign, Collaboration...",
+//     error: "Purpose of message is required.",
+//     customError: "Please let us know your purpose of contacting us!",
+//   },
+//   {
+//     name: "message",
+//     label: "Message",
+//     type: "textarea",
+//     placeholder: "Share your project details...",
+//     error: "Message is required.",
+//     customError: "Please enter some messages to give more details!",
+//   },
+// ];
 
 export const methodConfigs = {
   phone: { label: "Phone Number", placeholder: "+234 800 000 0000", type: "tel", inputMode: "numeric" },
