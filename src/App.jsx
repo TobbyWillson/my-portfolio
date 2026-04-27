@@ -61,7 +61,7 @@ const RootLayout = () => {
         </header>
 
         <div className='bg-background text-bg-text  transition-all duration-700'>
-          <main className='max-w-7xl mx-auto py-10 px-10'>
+          <main className='max-w-7xl mx-auto py-10 px-5'>
             <Outlet />
             <BackToTop />
           </main>

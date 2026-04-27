@@ -91,7 +91,7 @@ const HeroSection = () => {
           <div className='w-full lg:w-1/2 flex flex-col gap-5 max-[362px]:gap-5'>
             {/* Open to opportunities */}
             <OpenTo />
-            <div className='max-[373px]:text-[23px] text-[30px]  sm:text-[42px] xl:text-5xl md:leading-15   '>
+            <div className='max-[375px]:text-[23px] max-[424px]:text-[26px] text-[30px]  sm:text-[42px] xl:text-5xl md:leading-15   '>
               <p>
                 <span className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-2'>Hey, </span>
                 I'm Oluwatobi Wilson.
