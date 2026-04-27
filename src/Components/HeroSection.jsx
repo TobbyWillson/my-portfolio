@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import TelegramVanish from "./Thanos";
 
 import { useNavigate } from "react-router-dom";
-import OpenTo from "./openTo";
+import OpenTo from "./OpenTo";
 
 const HeroSection = () => {
   const [isDownloading, setIsDownloading] = useState(false);
