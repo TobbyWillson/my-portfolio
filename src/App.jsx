@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import { useTheme } from "./Components/ThemeContext";
 import ScrollToTop from "./Components/ScrollToTop";
 import { Helmet } from "react-helmet-async";
+import BackToTop from "./Components/BackToTop";
 
 const RootLayout = () => {
   const date = new Date();
@@ -60,8 +61,9 @@ const RootLayout = () => {
         </header>
 
         <div className='bg-background text-bg-text  transition-all duration-700'>
-          <main className='max-w-7xl mx-auto py-10 px-5'>
+          <main className='max-w-7xl mx-auto py-10 px-10'>
             <Outlet />
+            <BackToTop />
           </main>
         </div>
 
@@ -71,7 +73,7 @@ const RootLayout = () => {
           </div>
 
           {/* Footer Footer */}
-          <div className=' flex justify-center pt-15 pb-20 md:pb-35 border border-border-gray border-x-0 bg-gray-50 dark:bg-[#364153]'>
+          <div className=' flex justify-center pt-15 pb-20 md:pb-35 border border-border-gray border-x-0 bg-gray-50 dark:bg-[#171b22]'>
             <p className='font-semibold tracking-wider text-[12px]'>&copy; {year} tobbywillson. All Rights Reserved.</p>
           </div>
         </footer>

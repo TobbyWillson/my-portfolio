@@ -79,34 +79,39 @@ const Navbar = () => {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    setActive(location.pathname + location.hash);
-  }, [location]);
+    const current = location.hash ? location.pathname + location.hash : location.pathname;
+    setActive(current);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
-    const observers = navbarSection.map(({ id, http }) => {
-      const element = document.getElementById(id);
-      if (!element) return null;
+    if (location.pathname !== "/") return;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActive(http);
-          } else {
-            setActive((prev) => (prev === http ? "" : prev));
-          }
-        },
-        { threshold: 0.3 },
-      );
+    const observers = navbarSection
+      .filter(({ id }) => id === "projects")
+      .map(({ id, http }) => {
+        const el = document.getElementById(id);
+        if (!el) return null;
 
-      observer.observe(element);
-      return observer;
-    });
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setActive(http);
+            } else {
+              setActive((prev) => (prev === http ? "" : prev));
+            }
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -10% 0px" },
+        );
+
+        observer.observe(el);
+        return observer;
+      });
 
     return () => observers.forEach((o) => o?.disconnect());
   }, [location.pathname]);
 
   return (
-    <section className={`px-10 py-10 min-[570px]:px-15 sm:px-10 fixed inset-x-0 z-50 transition-all duration-700 ${scrolled ? "shadow-lg dark:shadow-gray-50/10 bg-background/60  backdrop-blur-lg" : ""}   `}>
+    <section className={`px-10 py-7 min-[570px]:px-15 sm:px-10 fixed inset-x-0 z-50 transition-all duration-700 ${scrolled ? "shadow-lg dark:shadow-gray-50/10 bg-background/60  backdrop-blur-lg" : ""}   `}>
       <nav className='max-w-7xl mx-auto  flex justify-between items-center relative '>
         <div>
           <Link to='/' onClick={() => setActive("")}>
@@ -117,7 +122,7 @@ const Navbar = () => {
         <div className={`hidden sm:flex gap-15 text-bg-text `}>
           {navbarSection.map((nav, index) => (
             <div key={index}>
-              <HashLink smooth to={nav.http} className={`font-semibold pb-2 relative`} onClick={() => setActive(nav.http)}>
+              <HashLink smooth to={nav.http} className={`font-semibold pb-2 relative`}>
                 {nav.title}
                 <span className={`absolute w-full bottom-0 left-0 h-[2px] bg-gray-200 dark:bg-gray-200 transition-transform origin-left duration-500 ease-in-out  ${active === nav.http ? "scale-x-100" : "scale-x-0"}`} />
               </HashLink>
@@ -143,9 +148,14 @@ const Navbar = () => {
         {/* Mobile Menu Bar */}
         <div className=' rounded-lg bg-gray-100 border-gray-300 dark:bg-[#272f3a] text-bg-text dark:border-gray-600 transition-all duration-500 border '>
           {navbarSection.map((nav, index) => (
-            <div key={index} className={`py-6 border-b border-border-gray last:border-none ${active === nav.http ? "bg-gray-200 transition-all duration-500 first:rounded-t-lg text-black dark:bg-gray-600 dark:text-white" : ""} `} onClick={() => setActive(nav.http)}>
-              <HashLink smooth to={nav.http}>
-                {/* {nav.title} */}
+            <div key={index} className={`py-6 border-b border-border-gray last:border-none ${active === nav.http ? "bg-gray-200 transition-all duration-500 first:rounded-t-lg text-black dark:bg-gray-600 dark:text-white" : ""} `}>
+              <HashLink
+                smooth
+                to={nav.http}
+                onClick={() => {
+                  setActive(nav.http);
+                }}
+              >
                 <div>{nav.title}</div>
               </HashLink>
             </div>
