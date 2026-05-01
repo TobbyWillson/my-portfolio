@@ -4,7 +4,7 @@ const WhatIOffer = () => {
   return (
     <div className='mt-25'>
       <h1 className='text-[32px] text-center'>What I have to offer</h1>
-      <h2 className='text-center '>Skills and expertise I bring to your team</h2>
+      <h2 className='text-center dark:text-bg-text/60 '>Skills and expertise I bring to your team</h2>
 
       <div className='flex flex-wrap mt-15 gap-5'>
         {Services.map((service, id) => (

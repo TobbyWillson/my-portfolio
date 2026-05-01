@@ -29,7 +29,7 @@ const PreviousProjects = () => {
       <div className='mb-30'>
         <div className='mb-20 flex flex-col gap-4'>
           <p className='text-3xl sm:text-4xl text-center tracking-[4px]'>Selected Projects</p>
-          <p className='text-[16px]  dark:text-gray-100/60 text-center'>Selection of projects I have previously worked on across frontend development.</p>
+          <p className='text-[16px]  dark:text-bg-text/60  text-center'>Selection of projects I have previously worked on across frontend development.</p>
         </div>
 
         <div className='flex flex-wrap gap-7'>
