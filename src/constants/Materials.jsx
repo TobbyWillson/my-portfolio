@@ -2,7 +2,7 @@ import { FaGitAlt, FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwi
 
 import { Phone, Mail, MailPlus } from "lucide-react";
 
-import { SiJavascript, SiMongodb, SiNodedotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 import DeskilzPreview from "../assets/images/Deskilz.png";
 import MedibotPreview from "../assets/images/Medibot.png";
@@ -34,6 +34,7 @@ export const navbarSection = [
 
 export const experiences = [
   { title: "JavaScript", years: "3 Years Experience", logo: <SiJavascript /> },
+  { title: "Next.js", years: "2 Years Experience", logo: <SiNextdotjs /> },
   { title: "React", years: "2 Years Experience", logo: <FaReact /> },
   { title: "Tailwind", years: "1 Year Experience", logo: <SiTailwindcss /> },
   { title: "Git", years: "3 Years Experience", logo: <FaGitAlt /> },
