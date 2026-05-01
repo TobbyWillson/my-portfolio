@@ -23,8 +23,8 @@ const StacksExpertise = () => {
     <div className='overflow-x-hidden'>
       <div className='my-30'>
         <div className='mb-20 flex flex-col gap-4'>
-          <p className='text-3xl sm:text-4xl text-center'>Tech Stack & Expertise</p>
-          <p className='text-sm sm:text-md dark:text-gray-100/60 text-center'>Technologies I have worked with to build magnificient products</p>
+          <h1 className='text-3xl sm:text-4xl text-center'>Tech Stack & Expertise</h1>
+          <h2 className='text-[16px] dark:text-gray-100/60 text-center'>Technologies I have worked with to build magnificient interfaces, and scalable applications.</h2>
         </div>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>

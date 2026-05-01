@@ -44,7 +44,7 @@ const AboutMe = () => {
       {/* Current Page Bar */}
 
       <div className=' '>
-        <div className='container mx-auto px-3'>
+        <div className='container mx-auto '>
           <div className=' mt-20 md:px-10'>
             {/* <img src='' alt='' className='' /> */}
             <div className=' border-b border-border-gray pb-5 rounded-lg'>

@@ -55,19 +55,28 @@ const RootLayout = () => {
         <meta name='description' content={pathDesc()} />
       </Helmet>
       {/* <ScrollToTop /> */}
-      <div className='select-none'>
-        <header className=''>
+      <div className='select-none min-h-screen bg-background relative'>
+        <div
+          className='fixed inset-0 z-0 pointer-events-none'
+          style={{
+            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
+            backgroundSize: `24px 24px`,
+            opacity: 0.3,
+          }}
+        />
+
+        <header className='z-10'>
           <Navbar />
         </header>
 
-        <div className='bg-background text-bg-text  transition-all duration-700'>
+        <div className=' text-bg-text  transition-all duration-700 z-10 relative'>
           <main className='max-w-7xl mx-auto py-10 px-5'>
             <Outlet />
             <BackToTop />
           </main>
         </div>
 
-        <footer className='bg-background text-bg-text border border-border-gray border-x-0'>
+        <footer className=' text-bg-text border border-border-gray border-x-0'>
           <div className='max-w-7xl mx-auto p-10'>
             <Footer />
           </div>

@@ -155,7 +155,7 @@ const HeroSection = () => {
         </div>
 
         <div className='mt-8 pb-10 border-b border-border-gray flex flex-col  min-[430px]:flex-row  min-[430px]:items-center gap-4'>
-          <div className='flex ' onClick={handleHireMe}>
+          <div className='flex w-fit' onClick={handleHireMe}>
             <button to=''>
               <div className='bg-[#586583] dark:bg-[#2763a0] border border-border-gray rounded-2xl  px-5 py-3 text-white text-[14px] md:text-[16px] flex justify-center items-center hover:scale-107 cursor-pointer transition-all duration-700  hover:bg-[#556daf]  gap-2'>
                 <div>
@@ -166,9 +166,9 @@ const HeroSection = () => {
             </button>
           </div>
 
-          <div>
+          <div className='w-fit'>
             <Link to='https://drive.google.com/file/d/1wjAULdzK-zRENYCg6fB0hiL7u-7OS_6g/view?usp=drive_link' target='_blank' rel='noopener noreferrer'>
-              <div className='w-fit flex items-center gap-2 rounded-2xl  px-5 py-3 text-[14px] md:text-[16px] border border-border-gray text-bg-text hover:scale-107 cursor-pointer transition-all duration-700 ' onClick={handleDownload}>
+              <p className=' flex items-center gap-2 rounded-2xl  px-5 py-3 text-[14px] md:text-[16px] border border-border-gray text-bg-text hover:scale-107 cursor-pointer transition-all duration-700 ' onClick={handleDownload}>
                 {isDownloading ? (
                   <>
                     Opening document
@@ -179,7 +179,7 @@ const HeroSection = () => {
                     View Resume <FaChevronRight />
                   </>
                 )}
-              </div>
+              </p>
             </Link>
           </div>
           {/* <div className={` ${scrolled ? "flex animate-bounce transition-all duration-500" : "hidden"} justify-center pt-12`}>

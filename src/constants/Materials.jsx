@@ -66,7 +66,7 @@ export const previousProjects = [
     projectDescription: "A trusted digital health companion. Our AI-powered chatbot is designed to provide you with accurate and personalized health information, support, and guidance.",
     projectPreview: MedibotPreview,
     alt: "Medibot Preview",
-    tools: ["React", "CSS"],
+    tools: ["React", "CSS", "Node/Express API", "MongoDB"],
     liveUrl: "https://medibot-coral.vercel.app",
     repoUrl: "https://github.com/TobbyWillson/Medibot",
   },
@@ -149,5 +149,26 @@ export const aboutConfigs = [
     approaches: ["Structured component design over isolated UI elements", "Business-aware development over surface-level styling", "Performance and usability over unnecessary complexity"],
     whoIWorkWith: "I work closely with designers, engineers, and stakeholders to turn ideas into reliable, user-focused products that are ready to scale.",
     involvement: "If it involves complex flows, real users, or high-impact systems, I’m interested.",
+  },
+];
+
+export const Services = [
+  {
+    id: 1,
+    category: "FRONTEND DEVELOPMENT",
+    title: "Modern & Scalable Designs",
+    body: "Building modern and scalable apps with React, Next.js, and Tailwind CSS.",
+  },
+  {
+    id: 2,
+    category: "API & DATA INTEGRATION",
+    title: "Bridging Systems",
+    body: "Connecting frontend interfaces to complex backend systems and building functional prototypes with Node.js.",
+  },
+  {
+    id: 3,
+    category: "UI/UX DESIGN",
+    title: "Smooth User Interface",
+    body: "Bridging the gap between design and code to create intuitive, user-friendly experiences.",
   },
 ];
