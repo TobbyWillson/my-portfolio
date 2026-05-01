@@ -141,9 +141,9 @@ export const aboutConfigs = [
   {
     greeting: "Hi",
     welcomeMsg: "You are welcome to read and understand more about me!",
-    aboutMe: "I am Oluwatobi Wilson, a frontend developer based in Nigeria.",
-    whatIDo: "  I build scalable, high-performance web applications that translate complex product ideas into clean, intuitive user interfaces. My work spans fintech, logistics, commerce, and education platforms—developing systems that balance user experience with real business needs.",
-    expertise: "Beyond writing code, I think in systems. I approach frontend development as part of a larger product ecosystem, ensuring that interfaces are not only visually clear, but structured, maintainable, and scalable.",
+    aboutMe: "I am Tobby Wilson, a frontend developer based in Nigeria.",
+    whatIDo: ["  I build scalable, high performance web applications that translate complex product ideas into clean, intuitive user interfaces. ", "My work spans fintech, logistics, commerce, and education platforms—developing systems that balance user experience with real business needs."],
+    expertise: "Beyond writing code, I think in systems. I don't just build interfaces, I build systems that scale.",
     whatIBuild: " From crypto platforms to logistics dashboards, accounting systems, and digital learning tools, I specialize in simplifying complex workflows into seamless user experiences.",
     aprroachTitle: "My approach combines:",
     approaches: ["Structured component design over isolated UI elements", "Business-aware development over surface-level styling", "Performance and usability over unnecessary complexity"],

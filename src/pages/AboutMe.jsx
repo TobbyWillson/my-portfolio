@@ -45,12 +45,12 @@ const AboutMe = () => {
 
       <div className=' '>
         <div className='container mx-auto px-3'>
-          <div className=' mt-30 md:px-10'>
+          <div className=' mt-20 md:px-10'>
             {/* <img src='' alt='' className='' /> */}
             <div className=' border-b border-border-gray pb-5 rounded-lg'>
               {aboutConfigs.map((about, index) => (
                 <div className='flex flex-col justify-center items-center gap-4' key={index}>
-                  <p className='text-2xl sm:text-3xl lg:text-4xl'>
+                  <p className='text-[28px] sm:text-3xl lg:text-4xl'>
                     {about.greeting}, {checkTimeOfDay()}
                   </p>
                   <p className='text-[14px] text-center sm:text-[20px]'>{about.welcomeMsg}</p>
@@ -60,11 +60,15 @@ const AboutMe = () => {
           </div>
 
           {/* Details on what I do */}
-          <div id='resume' className='md:px-10 font-manrope  '>
+          <div id='resume' className='md:px-10 max-w-[600px] px-5 '>
             {aboutConfigs.map((about, index) => (
-              <div key={index} className='flex flex-col text-justify gap-8 leading-8 mt-15'>
+              <div key={index} className='flex flex-col gap-8 leading-8 mt-15'>
                 <h1 className='font-extrabold '>{about.aboutMe}</h1>
-                <p className=''>{about.whatIDo}</p>
+
+                {about.whatIDo.map((what, index) => (
+                  <p className=''> {what} </p>
+                ))}
+
                 <p>
                   <span className='font-semibold'>{about.expertise}</span>
                   <br />

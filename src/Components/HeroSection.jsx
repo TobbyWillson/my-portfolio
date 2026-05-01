@@ -12,6 +12,7 @@ import TelegramVanish from "./Thanos";
 
 import { useNavigate } from "react-router-dom";
 import OpenTo from "./openTo";
+import { Contact } from "lucide-react";
 
 const HeroSection = () => {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -85,34 +86,23 @@ const HeroSection = () => {
   }, [isHired]);
 
   return (
-    <div className=''>
+    <div className='max-[420px]:px-3'>
       <div className='mt-17  sm:mt-33 '>
         <div className='flex flex-wrap items-center '>
-          <div className='w-full lg:w-1/2 flex flex-col gap-5 max-[362px]:gap-5'>
+          <div className='w-full lg:w-1/2 flex flex-col gap-5 '>
             {/* Open to opportunities */}
             <OpenTo />
-            <div className='max-[375px]:text-[23px] max-[424px]:text-[26px] text-[30px]  sm:text-[42px] xl:text-5xl md:leading-15   '>
-              <p>
-                <span className=' bg-linear-to-r from-[#a9bdee] to-[#2563EB] text-transparent bg-clip-text  mb-2'>Hey, </span>
-                I'm Oluwatobi Wilson.
+            <div className='sm:text-[42px] xl:text-5xl md:leading-15   '>
+              <p className='text-[48px] max-[462px]:text-[45px] max-[450px]:text-[42px] max-[420px]:text-[38px] max-[406px]:text-[35px] max-[389px]:text-[33px] font-extrabold '>I'm Tobby Willson.</p>
+              <p className='text-[32px] max-[420px]:text-[30px] max-[408px]:text-[26px] font-bold'>
+                A <ReactTyped strings={["Frontend Developer.", "React Specialist.", "UI Engineer."]} typeSpeed={40} backSpeed={30} loop />
               </p>
-              A <span class='text-[#2563EB]'>&lt;/</span>
-              <span class='bg-linear-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text'>Frontend Developer..</span>
-              <span class='text-[#2563EB]'>&gt;</span>
-              <p className='text-[20px] max-sm:leading-8 sm:text-[24px] md:leading-12 lg:leading-10 mt-5 min-[866px]:pr-10 min-[940px]:pr-20 min-[1024px]:mx-auto dark:text-white/70'>
-                <span className='relative inline-block '>
-                  <span className='invisible' aria-hidden='true'>
-                    I specialize in React, Next.js, and modern UI Systems to create seamless digital experiences that are both functional and visually refined.
-                  </span>
-
-                  <span className='absolute top-0 left-0 w-full'>
-                    <ReactTyped strings={[" I specialize in React, Next.js, and modern UI Systems to create seamless digital experiences that are both functional and visually refined."]} typeSpeed={40} contentType='html' />
-                  </span>
-                </span>
+              <p className='max-sm:leading-8 text-[18px] sm:text-[24px] md:leading-10 mt-5 min-[866px]:pr-10 min-[940px]:pr-20 min-[1024px]:mx-auto dark:text-white/80'>
+                I specialize in React, Next.js, and modern UI Systems to create seamless digital experiences that are both functional and visually refined.
               </p>
             </div>
 
-            <div className='dark:text-white/70'>
+            <div className='dark:text-white/70 text-[14px]'>
               <div className='relative min-h-[80px] flex items-center  overflow-hidden'>
                 {!isHired ? (
                   <div className='relative w-full'>
@@ -163,11 +153,14 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className='mt-8 pb-10 border-b border-border-gray flex flex-col  min-[600px]:flex-row gap-4'>
+        <div className='mt-8 pb-10 border-b border-border-gray flex flex-col  min-[430px]:flex-row  min-[430px]:items-center gap-4'>
           <div className='flex ' onClick={handleHireMe}>
             <button to=''>
-              <div className='border border-border-gray dark:border-0 rounded-2xl bg-linear-to-r from-gray-100 to-white dark:from-gray-100 dark:to-gray-200 px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB] hover:scale-107 cursor-pointer transition-all duration-700 hover:text-[#192239]  gap-2'>
-                Let's Build Something
+              <div className='bg-[#586583] dark:bg-[#2763a0] border border-border-gray rounded-2xl  px-5 py-3 text-white text-[14px] md:text-[16px] flex justify-center items-center hover:scale-107 cursor-pointer transition-all duration-700  hover:bg-[#556daf]  gap-2'>
+                <div>
+                  <Contact className='w-5 h-5' />
+                </div>
+                <p>Contact me</p>
               </div>
             </button>
           </div>

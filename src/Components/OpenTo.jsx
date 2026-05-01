@@ -2,7 +2,7 @@ import React from "react";
 
 const OpenTo = () => {
   return (
-    <div className='flex items-center w-fit gap-3 px-5 py-1 rounded-full border border-green-300/80 bg-green-800/70 dark:border-green-400/40 dark:bg-green-900/30'>
+    <div className='flex items-center w-fit gap-3 pl-2 pr-5  rounded-full border border-green-300/80 bg-[#f0fff0] dark:border-green-400/40 dark:bg-green-900/30'>
       {/* Indicator */}
       <div className='relative w-10 h-10 flex items-center justify-center shrink-0'>
         <span className='absolute w-8 h-8 rounded-full border border-green-400/25 animate-pulse-ring' />
@@ -12,8 +12,8 @@ const OpenTo = () => {
 
       {/* Text */}
       <div className=''>
-        <p className='text-[14px] tracking-wide text-green-50 leading-none'>
-          Open to <span className='dark:text-green-400'>Opportunities</span>
+        <p className='text-[14px] tracking-wide text-[#1e4620]  dark:text-green-50 leading-none'>
+          Open to <span className=''>Opportunities</span>
         </p>
       </div>
     </div>
