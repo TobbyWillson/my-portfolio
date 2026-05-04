@@ -65,7 +65,7 @@ const PreviousProjects = () => {
 
                   <div className='flex flex-wrap gap-6 max-[368px]:gap-4 pt-1'>
                     {project.liveUrl == "" ? (
-                      <div className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-3 py-2 text-sm font-medium text-white transition hover:bg-[#556daf]'> No Link Available </div>
+                      <div className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-2 py-2 text-sm font-medium text-white transition hover:bg-[#556daf]'> No Link Available </div>
                     ) : (
                       <a href={project.liveUrl} target='_blank' rel='noreferrer' className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-3 py-2 text-sm font-medium text-white transition-all duration-500 hover:bg-[#556daf]'>
                         View Website
