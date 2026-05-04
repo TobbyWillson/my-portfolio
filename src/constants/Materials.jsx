@@ -53,39 +53,211 @@ export const contactProfiles = [
   { label: "Send Email", icon: <MailPlus className='w-6 h-6' />, href: "mailto:adepitantobi@gmail.com" },
 ];
 
+// case study
 export const previousProjects = [
   {
+    id: "Eben-portfolio",
     projectName: "Ebenezer Portfolio",
-    projectDescription: "A portfolio website designed specially for a product designer. Showcasing amazing products designed by him.",
+    projectDescription: "A portfolio website designed for a product designer to showcase projects, skills, and experience.",
     projectPreview: EbenezerPreview,
     alt: "Ebenezer Portfolio",
     tools: ["React", "Tailwind", "CSS"],
     liveUrl: "https://akinebenezer.com",
-    caseStudy: "#",
     repoUrl: "https://github.com/TobbyWillson/Eben-Portfolio",
+
+    caseStudy: {
+      hero: {
+        title: "Designing a High-Impact Portfolio for a Product Designer",
+        subtitle: "Built a modern, conversion-focused portfolio to improve visibility and client engagement.",
+        role: "Frontend Developer & Designer",
+        duration: "3 weeks",
+        team: "Solo project",
+        tools: ["React", "Tailwind CSS"],
+      },
+
+      overview: {
+        context: "A product designer needed a personal portfolio to showcase work and attract clients.",
+        problem: "Existing portfolio lacked structure, clarity, and failed to communicate value effectively.",
+        goal: "Create a clean, modern portfolio that highlights projects and improves user engagement.",
+      },
+
+      research: {
+        methods: ["Portfolio benchmarking", "Competitor analysis", "UX best practices review"],
+        insights: ["Users scan portfolios quickly rather than reading in detail", "Clear project structure improves engagement", "Strong visuals increase perceived credibility"],
+      },
+
+      problemDefinition: {
+        painPoints: ["Unclear project presentation", "Poor visual hierarchy", "Low engagement from visitors"],
+        statement: "Design a portfolio that clearly communicates skills and showcases projects in a structured and engaging way.",
+      },
+
+      process: {
+        ideas: ["Minimalist layout", "Strong typography focus", "Project-first structure"],
+        iterations: ["Refined layout for better spacing and readability", "Improved navigation for easier access to projects"],
+      },
+
+      solution: {
+        features: ["Clean and minimal UI", "Dedicated project sections", "Responsive design across devices"],
+        decisions: ["Used whitespace to improve readability", "Prioritized projects over excessive text"],
+      },
+
+      results: {
+        metrics: ["Improved visual clarity and structure", "Better user navigation experience"],
+        qualitative: "Users found the portfolio easier to navigate and more visually appealing.",
+      },
+
+      nextSteps: ["Integrate CMS for easy updates", "Add blog/articles section"],
+    },
   },
+
   {
+    id: "Medibot",
     projectName: "Medibot - Medical Bot",
-    projectDescription: "A trusted digital health companion. Our AI-powered chatbot is designed to provide you with accurate and personalized health information, support, and guidance.",
+    projectDescription: "An AI-powered chatbot providing personalized health information and support.",
     projectPreview: MedibotPreview,
     alt: "Medibot Preview",
     tools: ["React", "CSS", "Node/Express API", "MongoDB"],
     liveUrl: "https://medibot-coral.vercel.app",
-    caseStudy: "#",
     repoUrl: "https://github.com/TobbyWillson/Medibot",
-  },
-  {
-    projectName: "Deskilz Restaurant (Clone)",
-    projectDescription: "Online food ordering service. Where you can order your favorite cuisine.",
 
+    caseStudy: {
+      hero: {
+        title: "Designing an AI Health Assistant for Better Accessibility",
+        subtitle: "Developed a chatbot to provide quick and reliable health guidance.",
+        role: "Fullstack Developer",
+        duration: "5 weeks",
+        team: "Solo project",
+        tools: ["React", "Node.js", "MongoDB"],
+      },
+
+      overview: {
+        context: "Access to quick and reliable health information is often limited.",
+        problem: "Users struggle to get immediate, trustworthy health advice online.",
+        goal: "Create an accessible chatbot that delivers accurate and helpful responses.",
+      },
+
+      research: {
+        methods: ["User research", "Health platform analysis"],
+        insights: ["Users want fast responses", "Trust is critical in health-related apps", "Simple UI improves usability"],
+      },
+
+      problemDefinition: {
+        painPoints: ["Delayed access to information", "Information overload from search engines"],
+        statement: "Provide users with a fast, reliable, and simple way to access health information.",
+      },
+
+      process: {
+        ideas: ["Chat-based interface", "Simple input/output flow"],
+        iterations: ["Improved chatbot response handling", "Enhanced UI for readability"],
+      },
+
+      solution: {
+        features: ["AI chatbot interface", "Real-time responses", "Simple and clean UI"],
+        decisions: ["Used chat UI for familiarity", "Kept design minimal to reduce cognitive load"],
+      },
+
+      results: {
+        metrics: ["Improved response accessibility", "Reduced time to get basic health info"],
+        qualitative: "Users appreciated the speed and simplicity of the chatbot.",
+      },
+
+      nextSteps: ["Add voice interaction", "Improve AI accuracy"],
+    },
+  },
+
+  {
+    id: "Deskilz",
+    projectName: "Deskilz Restaurant (Clone)",
+    projectDescription: "A food ordering web app allowing users to browse and order meals easily.",
     projectPreview: DeskilzPreview,
     alt: "Deskilz Web App Preview",
     tools: ["HTML", "CSS", "JavaScript"],
     liveUrl: "",
-    caseStudy: "#",
     repoUrl: "https://github.com/TobbyWillson/Deskilz-Clone",
+
+    caseStudy: {
+      hero: {
+        title: "Building a Seamless Food Ordering Experience",
+        subtitle: "Created a responsive food ordering interface focused on usability.",
+        role: "Frontend Developer",
+        duration: "2 weeks",
+        team: "Solo project",
+        tools: ["HTML", "CSS", "JavaScript"],
+      },
+
+      overview: {
+        context: "Food delivery platforms require intuitive and fast ordering experiences.",
+        problem: "Complex navigation can frustrate users and reduce conversions.",
+        goal: "Design a simple and intuitive ordering interface.",
+      },
+
+      research: {
+        methods: ["Competitor analysis"],
+        insights: ["Users prefer simple navigation", "Clear CTAs improve ordering flow"],
+      },
+
+      problemDefinition: {
+        painPoints: ["Confusing menus", "Too many steps to order"],
+        statement: "Simplify the food ordering process for faster and easier transactions.",
+      },
+
+      process: {
+        ideas: ["Grid-based menu layout", "Clear call-to-action buttons"],
+        iterations: ["Improved layout spacing", "Enhanced button visibility"],
+      },
+
+      solution: {
+        features: ["Clean menu layout", "Responsive design", "Simple ordering flow"],
+        decisions: ["Used grid layout for clarity", "Highlighted key actions"],
+      },
+
+      results: {
+        metrics: ["Improved usability", "Faster navigation experience"],
+        qualitative: "Users found the interface straightforward and easy to use.",
+      },
+
+      nextSteps: ["Integrate backend", "Add user accounts"],
+    },
   },
 ];
+
+// Projects
+// export const previousProjects = [
+//   {
+//     id: "Eben-portfolio",
+//     projectName: "Ebenezer Portfolio",
+//     projectDescription: "A portfolio website designed specially for a product designer. Showcasing amazing products designed by him.",
+//     projectPreview: EbenezerPreview,
+//     alt: "Ebenezer Portfolio",
+//     tools: ["React", "Tailwind", "CSS"],
+//     liveUrl: "https://akinebenezer.com",
+//     caseStudy: "#",
+//     repoUrl: "https://github.com/TobbyWillson/Eben-Portfolio",
+//   },
+//   {
+//     id: "Medibot",
+//     projectName: "Medibot - Medical Bot",
+//     projectDescription: "A trusted digital health companion. Our AI-powered chatbot is designed to provide you with accurate and personalized health information, support, and guidance.",
+//     projectPreview: MedibotPreview,
+//     alt: "Medibot Preview",
+//     tools: ["React", "CSS", "Node/Express API", "MongoDB"],
+//     liveUrl: "https://medibot-coral.vercel.app",
+//     caseStudy: "#",
+//     repoUrl: "https://github.com/TobbyWillson/Medibot",
+//   },
+//   {
+//     id: "Deskilz",
+//     projectName: "Deskilz Restaurant (Clone)",
+//     projectDescription: "Online food ordering service. Where you can order your favorite cuisine.",
+
+//     projectPreview: DeskilzPreview,
+//     alt: "Deskilz Web App Preview",
+//     tools: ["HTML", "CSS", "JavaScript"],
+//     liveUrl: "",
+//     caseStudy: "#",
+//     repoUrl: "https://github.com/TobbyWillson/Deskilz-Clone",
+//   },
+// ];
 
 // export const fieldConfigs = [
 //   {

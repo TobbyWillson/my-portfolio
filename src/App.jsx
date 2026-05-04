@@ -13,6 +13,7 @@ import { useTheme } from "./Components/ThemeContext";
 import ScrollToTop from "./Components/ScrollToTop";
 import { Helmet } from "react-helmet-async";
 import BackToTop from "./Components/BackToTop";
+import ProjectDetails from "./pages/projects/ProjectDetails";
 
 const RootLayout = () => {
   const date = new Date();
@@ -99,6 +100,7 @@ const router = createBrowserRouter(
       {/* New Method */}
       <Route path='about' element={<AboutMe />} />
       <Route path='contact' element={<Contact />} />
+      <Route path='/projects/:id' element={<ProjectDetails />} />
 
       <Route path='*' element={<NotFound />} />
     </Route>,

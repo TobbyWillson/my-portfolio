@@ -39,7 +39,7 @@ const WhatIOffer = () => {
               key={id}
               variants={item}
               whileHover={{ y: -5 }}
-              className={`group border border-border-gray rounded-xl py-4 px-5 hover:md:border-b-4 hover:md:border-b-red-500/30  active:border-b-4 active:border-b-red-500/30 active:scale-102 transition-all duration-500 ${service.id === 1 ? "border-l-4 border-l-red-500/80" : ""}`}
+              className={`group border border-border-gray rounded-xl py-4 px-5 hover:md:border-b-4 hover:md:border-b-red-500/30  active:border-b-4 active:border-b-red-500/30 active:scale-107 transition-all duration-500 ${service.id === 1 ? "border-l-4 border-l-red-500/80" : ""}`}
             >
               <h3 className='text-bg-text/70  text-[13px] tracking-[3px]'>{service.category} </h3>
               <p className='text-bg-text font-extrabold py-4'> {service.title} </p>

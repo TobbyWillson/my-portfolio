@@ -59,15 +59,15 @@ const PreviousProjects = () => {
                     ))}
                   </div>
 
-                  <Link to={project.caseStudy} className='text-center'>
-                    <div className='bg-[#586583] px-3 py-2 rounded-lg hover:scale-105 hover:bg-[#556daf] transition-all duration-700 lg:w-fit'>View Case Study</div>
+                  <Link to={`/projects/${project.id}`} className='text-center'>
+                    <div className='bg-[#586583] px-3 py-2 rounded-lg hover:scale-105 hover:bg-[#556daf] text-white transition-all duration-700 lg:w-fit'>View Case Study</div>
                   </Link>
 
                   <div className='flex flex-wrap gap-6 max-[368px]:gap-4 pt-1'>
                     {project.liveUrl == "" ? (
-                      <div className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-2 py-2 text-sm font-medium text-white transition hover:bg-[#556daf]'> No Link Available </div>
+                      <div className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-2 py-2 text-sm font-medium text-bg-text transition hover:bg-[#556daf]'> No Link Available </div>
                     ) : (
-                      <a href={project.liveUrl} target='_blank' rel='noreferrer' className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-3 py-2 text-sm font-medium text-white transition-all duration-500 hover:bg-[#556daf]'>
+                      <a href={project.liveUrl} target='_blank' rel='noreferrer' className='inline-flex items-center gap-2 rounded-lg border border-border-gray px-3 py-2 text-sm font-medium text-bg-text transition-all duration-500 hover:bg-[#556daf]'>
                         View Website
                         {project.liveUrl == "" ? "" : <FaArrowUpRightFromSquare className='h-3.5 w-3.5 opacity-90' aria-hidden />}
                       </a>

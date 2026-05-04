@@ -101,12 +101,12 @@ const AboutMe = () => {
                   <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full  text-bg-text animate-spin'></span>
                 </>
               ) : (
-                <div className='bg-background border border-border-gray flex justify-center px-5 py-3 rounded-2xl min-w-[140px]'>My Resume</div>
+                <p className='bg-background border border-border-gray flex justify-center px-5 py-3 rounded-2xl text-[14px] md:text-[16px]  min-w-[140px]'>My Resume</p>
               )}
             </Link>
 
             <Link to={whatsappURL} target='_blank' rel='noreferrer' className='max-sm:'>
-              <div className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px]  hover:scale-107 transition-all duration-700 cursor-pointer gap-2 min-w-[140px]'>Contact me</div>
+              <p className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px]  hover:scale-107 transition-all duration-700 cursor-pointer gap-2 min-w-[140px]'>Contact me</p>
             </Link>
           </div>
           {/* <p className={`${downloadMessage ? "absolute -translate-y-45 bg-gray-900 text-white p-4 rounded-xl shadow-2xl  transition-all duration-700" : ""} `}>{downloadMessage}</p> */}
