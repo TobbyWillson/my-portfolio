@@ -70,7 +70,7 @@ const RootLayout = () => {
         </header>
 
         <div className=' text-bg-text  transition-all duration-700 z-10 relative'>
-          <main className='max-w-7xl mx-auto py-10 px-5'>
+          <main className='max-w-7xl mx-auto py-10 px-5 sm:px-10'>
             <Outlet />
             <BackToTop />
           </main>
