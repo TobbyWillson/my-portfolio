@@ -166,7 +166,7 @@ const HeroSection = () => {
             </button>
           </div>
 
-          <div className='w-fit'>
+          <div className='w-fit bg-background'>
             <Link to='https://drive.google.com/file/d/1wjAULdzK-zRENYCg6fB0hiL7u-7OS_6g/view?usp=drive_link' target='_blank' rel='noopener noreferrer'>
               <p className=' flex items-center gap-2 rounded-2xl  px-5 py-3 text-[14px] md:text-[16px] border border-border-gray text-bg-text hover:scale-107 cursor-pointer transition-all duration-700 ' onClick={handleDownload}>
                 {isDownloading ? (

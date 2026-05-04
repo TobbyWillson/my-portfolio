@@ -60,7 +60,7 @@ const AboutMe = () => {
           </div>
 
           {/* Details on what I do */}
-          <div id='resume' className='md:px-10 max-w-[600px] px-5 '>
+          <div id='resume' className='md:px-10  px-5 '>
             {aboutConfigs.map((about, index) => (
               <div key={index} className='flex flex-col gap-8 leading-8 mt-15'>
                 <h1 className='font-extrabold '>{about.aboutMe}</h1>
@@ -94,22 +94,19 @@ const AboutMe = () => {
           </div>
 
           <div className='flex flex-col-reverse sm:flex-row gap-4 justify-center md:justify-start items-center mt-15 mb-25 md:px-10'>
-            <Link to='https://drive.google.com/file/d/1wjAULdzK-zRENYCg6fB0hiL7u-7OS_6g/view?usp=drive_link' target='_blank' rel='noopener noreferrer' className='text-[#192239] text-[16px] hover:scale-105 transition-all duration-700 flex items-center gap-2' onClick={handleDownload}>
+            <Link to='https://drive.google.com/file/d/1wjAULdzK-zRENYCg6fB0hiL7u-7OS_6g/view?usp=drive_link' target='_blank' rel='noopener noreferrer' className=' text-[16px] hover:scale-105 transition-all duration-700 flex items-center gap-2' onClick={handleDownload}>
               {isDownloading ? (
                 <>
                   <p className='text-bg-text'>Opening document</p>
                   <span className='w-4 h-4 border-2 border-current border-t-transparent rounded-full  text-bg-text animate-spin'></span>
                 </>
               ) : (
-                <div className='bg-[#DCEFFF] flex justify-center px-5 py-3 rounded-full'>My Resume</div>
+                <div className='bg-background border border-border-gray flex justify-center px-5 py-3 rounded-2xl'>My Resume</div>
               )}
             </Link>
 
             <Link to={whatsappURL} target='_blank' rel='noreferrer' className='max-sm:'>
-              <div className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-100 to-white dark:from-gray-100 dark:to-gray-200 px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB] hover:text-[#192239] hover:scale-107 transition-all duration-700 cursor-pointer gap-2'>
-                <FaWhatsapp className='w-5 h-5' />
-                WhatsApp Me!
-              </div>
+              <div className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px]  hover:scale-107 transition-all duration-700 cursor-pointer gap-2'>Contact me</div>
             </Link>
           </div>
           {/* <p className={`${downloadMessage ? "absolute -translate-y-45 bg-gray-900 text-white p-4 rounded-xl shadow-2xl  transition-all duration-700" : ""} `}>{downloadMessage}</p> */}

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { experiences } from "../constants/Materials";
+import { experiences, Skills } from "../constants/Materials";
 import { useTheme } from "./ThemeContext";
 
 const StacksExpertise = () => {
@@ -27,7 +27,7 @@ const StacksExpertise = () => {
           <h2 className='text-[16px] dark:text-bg-text/60 text-center'>Technologies I have worked with to build magnificient interfaces, and scalable applications.</h2>
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {/* <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {experiences.map((experience, index) => (
             <div
               key={index}
@@ -40,6 +40,27 @@ const StacksExpertise = () => {
                   <h1 className='text-[28px] lg:text-[34px]'>{experience.title}</h1>
                   <p>{experience.years}</p>
                 </div>
+              </div>
+            </div>
+          ))}
+        </div> */}
+
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {Skills.map((skill, index) => (
+            <div
+              key={index}
+              style={{ transitionDelay: `${(2 - (index % 3)) * 100}ms` }}
+              className={`scroll-item-experience ${isDark ? "bg-[#272f3a]" : "bg-gray-100 hover:bg-gray-50"} px-5  py-5 rounded-xl  dark:shadow-gray-50/10 hover:md:border-b-4 hover:md:scale-102 border-border-gray dark:hover:bg-[#2f3844] transition-all duration-300`}
+            >
+              <div className='flex items-center gap-6 mb-5 text-[22px]'>{skill.category}</div>
+
+              <div className='flex flex-wrap gap-3'>
+                {skill.items.map((item, index) => (
+                  <div key={index} className='flex gap-2 items-center border border-border-gray rounded-2xl px-3 py-2 text-[13px]'>
+                    <div>{item.logo}</div>
+                    <p>{item.title}</p>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

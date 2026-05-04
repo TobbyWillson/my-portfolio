@@ -2,11 +2,12 @@ import { FaGitAlt, FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwi
 
 import { Phone, Mail, MailPlus } from "lucide-react";
 
-import { SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { SiFigma, SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiTailwindcss, SiTypescript, SiVercel } from "react-icons/si";
 
 import DeskilzPreview from "../assets/images/Deskilz.png";
 import MedibotPreview from "../assets/images/Medibot.png";
 import EbenezerPreview from "../assets/images/Ebenezer.jpg";
+import { VscVscode } from "react-icons/vsc";
 
 // WhatsApp link and message
 
@@ -60,6 +61,7 @@ export const previousProjects = [
     alt: "Ebenezer Portfolio",
     tools: ["React", "Tailwind", "CSS"],
     liveUrl: "https://akinebenezer.com",
+    caseStudy: "#",
     repoUrl: "https://github.com/TobbyWillson/Eben-Portfolio",
   },
   {
@@ -69,6 +71,7 @@ export const previousProjects = [
     alt: "Medibot Preview",
     tools: ["React", "CSS", "Node/Express API", "MongoDB"],
     liveUrl: "https://medibot-coral.vercel.app",
+    caseStudy: "#",
     repoUrl: "https://github.com/TobbyWillson/Medibot",
   },
   {
@@ -79,6 +82,7 @@ export const previousProjects = [
     alt: "Deskilz Web App Preview",
     tools: ["HTML", "CSS", "JavaScript"],
     liveUrl: "",
+    caseStudy: "#",
     repoUrl: "https://github.com/TobbyWillson/Deskilz-Clone",
   },
 ];
@@ -159,17 +163,74 @@ export const Services = [
     category: "FRONTEND DEVELOPMENT",
     title: "Modern & Scalable Designs",
     body: "Building modern and scalable apps with React, Next.js, and Tailwind CSS.",
+    core: "true",
   },
   {
     id: 2,
     category: "API & DATA INTEGRATION",
     title: "Bridging Systems",
     body: "Connecting frontend interfaces to complex backend systems and building functional prototypes with Node.js.",
+    core: "false",
   },
   {
     id: 3,
     category: "UI/UX DESIGN",
     title: "Smooth User Interface",
     body: "Bridging the gap between design and code to create intuitive, user-friendly experiences.",
+    core: "false",
   },
+];
+
+export const Skills = [
+  {
+    id: 1,
+    category: "Frontend Architecture",
+    items: [
+      { title: "JavaScript", logo: <SiJavascript /> },
+      { title: "TypeScript", logo: <SiTypescript /> },
+      { title: "React", logo: <FaReact /> },
+      { title: "Next.js", logo: <SiNextdotjs /> },
+    ],
+  },
+  {
+    id: 2,
+    category: "UI Engineering",
+    items: [
+      { title: "Tailwind CSS", logo: <SiTailwindcss /> },
+      { title: "Shadcn/ui", logo: "" },
+      { title: "Framer Motion", logo: "" },
+    ],
+  },
+  {
+    id: 3,
+    category: "API & Data Integration",
+    items: [
+      { title: "Node.js/Express", logo: <SiNodedotjs /> },
+      { title: "MongoDB", logo: <SiMongodb /> },
+    ],
+  },
+  {
+    id: 4,
+    category: "Development & Tooling",
+    items: [
+      { title: "Vercel", logo: <SiVercel /> },
+      { title: "Git", logo: <FaGitAlt /> },
+      { title: "VS Code", logo: <VscVscode /> },
+    ],
+  },
+  {
+    id: 5,
+    category: "Design & Prototyping",
+    items: [{ title: "Figma", logo: <SiFigma /> }],
+  },
+];
+export const experie = [
+  { title: "JavaScript", years: "3 Years Experience", logo: <SiJavascript /> },
+  { title: "Next.js", years: "2 Years Experience", logo: <SiNextdotjs /> },
+  { title: "React", years: "2 Years Experience", logo: <FaReact /> },
+  { title: "Tailwind", years: "1 Year Experience", logo: <SiTailwindcss /> },
+  { title: "Git", years: "3 Years Experience", logo: <FaGitAlt /> },
+  { title: "TypeScript", years: "3 Months Experience", logo: <SiTypescript /> },
+  { title: "Node.js", years: "1 Year Experience", logo: <SiNodedotjs /> },
+  { title: "MongoDB", years: "1 Year Experience", logo: <SiMongodb /> },
 ];

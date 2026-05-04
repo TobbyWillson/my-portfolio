@@ -76,7 +76,7 @@ const RootLayout = () => {
           </main>
         </div>
 
-        <footer className=' text-bg-text border border-border-gray border-x-0'>
+        <footer className=' text-bg-text border  border-border-gray border-x-0'>
           <div className='max-w-7xl mx-auto p-10'>
             <Footer />
           </div>
