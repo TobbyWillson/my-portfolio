@@ -24,7 +24,7 @@ const ProjectDetails = () => {
         <h1 className='text-9xl font-bold text-gray-200 dark:text-gray-700/40 absolute z-0 animate-pulse'>404</h1>
 
         <div className='z-10 flex flex-col items-center'>
-          <h2 className='text-3xl md:text-4xl font-bold text-[#586583] mb-4'>Project Not Found</h2>
+          <h2 className='text-3xl md:text-4xl font-bold text-[#677697] mb-4'>Project Not Found</h2>
           <p className='text-gray-500 mb-8 max-w-md mx-auto'>The project you're looking for doesn't exist or may have been moved. Double check the URL or head back to the projects section.</p>
 
           <Link to='/#projects' className='flex justify-center items-center gap-2 w-fit bg-[#586583] hover:bg-[#556daf] text-white px-8 py-3 rounded-full font-medium transition-colors duration-300 shadow-lg hover:shadow-[#556daf]/20'>
@@ -39,7 +39,7 @@ const ProjectDetails = () => {
   const { hero, overview, research, problemDefinition, process, solution, results, nextSteps } = project.caseStudy;
 
   return (
-    <div className='mt-8  py-10 px-5'>
+    <div className='mt-18 max-w-3xl mx-auto'>
       <div onClick={goBack} className='flex gap-2 items-center text-[13px] mb-10 cursor-pointer'>
         <MdArrowBack />
         <p>go back</p>
@@ -62,7 +62,7 @@ const ProjectDetails = () => {
             Team: <span className='font-normal text-[14px]'> {hero.team}</span>
           </p>
 
-          <div className='flex gap-2 items-center border border-border-gray px-3 py-2 rounded-lg'>
+          <div className='flex flex-wrap gap-2 items-center border border-border-gray px-3 py-2 rounded-lg'>
             <p className='text-[16px] font-bold'>Tools:</p>
             {hero.tools.map((tool, index) => (
               <h3 key={index} className='font-normal text-[14px] border border-border-gray px-3 py-1 rounded-lg'>

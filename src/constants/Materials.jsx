@@ -2,7 +2,7 @@ import { FaGitAlt, FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwi
 
 import { Phone, Mail, MailPlus, Framer } from "lucide-react";
 
-import { SiFigma, SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiShadcnui, SiTailwindcss, SiTypescript, SiVercel } from "react-icons/si";
+import { SiFigma, SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiRender, SiShadcnui, SiTailwindcss, SiTypescript, SiVercel } from "react-icons/si";
 
 import DeskilzPreview from "../assets/images/Deskilz.png";
 import MedibotPreview from "../assets/images/Medibot.png";
@@ -137,7 +137,7 @@ export const previousProjects = [
         role: "Fullstack Developer",
         duration: "5 weeks",
         team: "Solo project",
-        tools: ["React", "Node.js", "MongoDB"],
+        tools: ["React", "CSS", "Node.js", "MongoDB"],
       },
 
       overview: {
@@ -389,6 +389,7 @@ export const Skills = [
     items: [
       { title: "Node.js/Express", logo: <SiNodedotjs /> },
       { title: "MongoDB", logo: <SiMongodb /> },
+      { title: "Render", logo: <SiRender /> },
     ],
   },
   {
