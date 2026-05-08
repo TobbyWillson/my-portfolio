@@ -106,7 +106,7 @@ const AboutMe = () => {
             </Link>
 
             <Link to={whatsappURL} target='_blank' rel='noreferrer' className='max-sm:'>
-              <p className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px]  hover:scale-107 transition-all duration-700 cursor-pointer gap-2 min-w-[140px]'>Contact me</p>
+              <p className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px] text-white  hover:scale-107 transition-all duration-700 cursor-pointer gap-2 min-w-[140px]'>Contact me</p>
             </Link>
           </div>
           {/* <p className={`${downloadMessage ? "absolute -translate-y-45 bg-gray-900 text-white p-4 rounded-xl shadow-2xl  transition-all duration-700" : ""} `}>{downloadMessage}</p> */}

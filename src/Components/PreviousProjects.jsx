@@ -38,7 +38,8 @@ const PreviousProjects = () => {
             <div key={project.projectName} className='w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]'>
               <article
                 style={{ transitionDelay: `${(index % 3) * 100}ms` }}
-                className={`scroll-item  group flex flex-col overflow-hidden rounded-xl shadow-md dark:shadow-gray-50/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-gray-50/15 ${isDark ? "bg-[#272f3a] dark:hover:bg-[#2f3844]" : "bg-gray-100 hover:bg-gray-50"}`}
+                tabIndex={0}
+                className={`scroll-item  group flex flex-col overflow-hidden rounded-xl shadow-md dark:shadow-gray-50/10 transition-all duration-300 hover:md:scale-[1.03] focus:scale-[1.03] hover:md:shadow-lg focus::shadow-lg dark:hover:md:shadow-gray-50/15 focus:shadow-gray-50/15 ${isDark ? "bg-[#272f3a] dark:hover:md:bg-[#2f3844]  focus:bg-[#2f3844]" : "bg-gray-100 hover:md:bg-gray-50 focus:bg-gray-50 "}`}
               >
                 <div className='relative aspect-[16/10] overflow-hidden bg-gray-200 dark:bg-gray-800'>
                   <img src={project.projectPreview} alt={project.alt} className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-110' loading='lazy' />
@@ -59,8 +60,8 @@ const PreviousProjects = () => {
                     ))}
                   </div>
 
-                  <Link to={`/projects/${project.id}`} className='text-center'>
-                    <div className='bg-[#586583] px-3 py-2 rounded-lg hover:scale-105 hover:bg-[#556daf] text-white transition-all duration-700 lg:w-fit'>View Case Study</div>
+                  <Link to={`/projects/${project.id}`} className='text-center hover:md:scale-105 hover:md:bg-[#556daf] focus:scale-105 focus:bg-[#556daf] bg-[#586583] px-3 py-2 rounded-lg  text-white transition-all duration-700 block'>
+                    View Case Study
                   </Link>
 
                   <div className='flex flex-wrap gap-6 max-[368px]:gap-4 pt-1'>

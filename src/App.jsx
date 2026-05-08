@@ -56,7 +56,7 @@ const RootLayout = () => {
         <meta name='description' content={pathDesc()} />
       </Helmet>
       {/* <ScrollToTop /> */}
-      <div className='select-none min-h-screen bg-background relative'>
+      <div className='select-none overflow-x-hidden min-h-screen bg-background relative'>
         <div
           className='fixed inset-0 z-0 pointer-events-none'
           style={{

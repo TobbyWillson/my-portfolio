@@ -20,7 +20,7 @@ const StacksExpertise = () => {
   }, []);
 
   return (
-    <div className='overflow-x-hidden'>
+    <div className=''>
       <div className='my-30'>
         <div className='mb-20 flex flex-col gap-4'>
           <h1 className='text-3xl sm:text-4xl text-center'>Tech Stack & Expertise</h1>
@@ -49,8 +49,9 @@ const StacksExpertise = () => {
           {Skills.map((skill, index) => (
             <div
               key={index}
+              tabIndex={0}
               style={{ transitionDelay: `${(2 - (index % 3)) * 100}ms` }}
-              className={`scroll-item-experience ${isDark ? "bg-[#272f3a]" : "bg-gray-100 hover:bg-gray-50"} px-5  py-5 rounded-xl  dark:shadow-gray-50/10 hover:md:border-b-4 hover:md:scale-102 border-border-gray dark:hover:bg-[#2f3844] transition-all duration-300`}
+              className={`scroll-item-experience ${isDark ? "bg-[#272f3a]" : "bg-gray-100 hover:bg-gray-50"} px-5  py-5 rounded-xl  dark:shadow-gray-50/10 hover:md:border-b-5 hover:md:border-red-500/50 hover:md:scale-105  focus:border-b-5 focus:border-red-500/50 focus:scale-105 border-border-gray dark:hover:bg-[#2f3844] transition-all duration-300`}
             >
               <div className='flex items-center gap-6 mb-5 text-[22px]'>{skill.category}</div>
 

@@ -1,13 +1,23 @@
 import { FaGitAlt, FaGithub, FaLinkedin, FaReact, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 
-import { Phone, Mail, MailPlus } from "lucide-react";
+import { Phone, Mail, MailPlus, Framer } from "lucide-react";
 
-import { SiFigma, SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiTailwindcss, SiTypescript, SiVercel } from "react-icons/si";
+import { SiFigma, SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiShadcnui, SiTailwindcss, SiTypescript, SiVercel } from "react-icons/si";
 
 import DeskilzPreview from "../assets/images/Deskilz.png";
 import MedibotPreview from "../assets/images/Medibot.png";
 import EbenezerPreview from "../assets/images/Ebenezer.jpg";
 import { VscVscode } from "react-icons/vsc";
+
+// FramerMotion Logo
+const FramerMotion = ({ size = 7, color = "currentColor" }) => (
+  <svg viewBox='0 0 34 12' fill='none' xmlns='http://www.w3.org/2000/svg' style={{ height: size, width: "auto" }}>
+    <path
+      d='M 12.838 0 L 6.12 11.989 L 0 11.989 L 5.245 2.628 C 6.059 1.176 8.088 0 9.778 0 Z M 27.846 2.997 C 27.846 1.342 29.216 0 30.906 0 C 32.596 0 33.966 1.342 33.966 2.997 C 33.966 4.653 32.596 5.995 30.906 5.995 C 29.216 5.995 27.846 4.653 27.846 2.997 Z M 13.985 0 L 20.105 0 L 13.387 11.989 L 7.267 11.989 Z M 21.214 0 L 27.334 0 L 22.088 9.362 C 21.275 10.813 19.246 11.989 17.556 11.989 L 14.496 11.989 Z'
+      fill={color}
+    />
+  </svg>
+);
 
 // WhatsApp link and message
 
@@ -45,18 +55,18 @@ export const experiences = [
 ];
 
 export const contactProfiles = [
-  { label: "WhatsApp", icon: <FaWhatsapp className='w-6 h-6' />, href: whatsappURL },
+  // { label: "WhatsApp", icon: <FaWhatsapp className='w-6 h-6' />, href: whatsappURL },
   { label: "Twitter", icon: <FaXTwitter className='w-6 h-6' />, href: "https://x.com/tobby_willson" },
   { label: "LinkedIn", icon: <FaLinkedin className='w-6 h-6' />, href: "https://linkedin.com/in/tobby-willson-069341297" },
   { label: "Github", icon: <FaGithub className='w-6 h-6' />, href: "https://github.com/TobbyWillson" },
-  { label: "Telegram", icon: <FaTelegram className='w-6 h-6' />, href: "https://t.me/tobby_willson" },
+  // { label: "Telegram", icon: <FaTelegram className='w-6 h-6' />, href: "https://t.me/tobby_willson" },
   { label: "Send Email", icon: <MailPlus className='w-6 h-6' />, href: "mailto:adepitantobi@gmail.com" },
 ];
 
 // case study
 export const previousProjects = [
   {
-    id: "Eben-portfolio",
+    id: "eben-portfolio",
     projectName: "Ebenezer Portfolio",
     projectDescription: "A portfolio website designed for a product designer to showcase projects, skills, and experience.",
     projectPreview: EbenezerPreview,
@@ -111,7 +121,7 @@ export const previousProjects = [
   },
 
   {
-    id: "Medibot",
+    id: "medibot",
     projectName: "Medibot - Medical Bot",
     projectDescription: "An AI-powered chatbot providing personalized health information and support.",
     projectPreview: MedibotPreview,
@@ -166,7 +176,7 @@ export const previousProjects = [
   },
 
   {
-    id: "Deskilz",
+    id: "deskilz",
     projectName: "Deskilz Restaurant (Clone)",
     projectDescription: "A food ordering web app allowing users to browse and order meals easily.",
     projectPreview: DeskilzPreview,
@@ -369,8 +379,8 @@ export const Skills = [
     category: "UI Engineering",
     items: [
       { title: "Tailwind CSS", logo: <SiTailwindcss /> },
-      { title: "Shadcn/ui", logo: "" },
-      { title: "Framer Motion", logo: "" },
+      { title: "Shadcn/ui", logo: <SiShadcnui /> },
+      { title: "Framer Motion", logo: <FramerMotion /> },
     ],
   },
   {
@@ -395,14 +405,4 @@ export const Skills = [
     category: "Design & Prototyping",
     items: [{ title: "Figma", logo: <SiFigma /> }],
   },
-];
-export const experie = [
-  { title: "JavaScript", years: "3 Years Experience", logo: <SiJavascript /> },
-  { title: "Next.js", years: "2 Years Experience", logo: <SiNextdotjs /> },
-  { title: "React", years: "2 Years Experience", logo: <FaReact /> },
-  { title: "Tailwind", years: "1 Year Experience", logo: <SiTailwindcss /> },
-  { title: "Git", years: "3 Years Experience", logo: <FaGitAlt /> },
-  { title: "TypeScript", years: "3 Months Experience", logo: <SiTypescript /> },
-  { title: "Node.js", years: "1 Year Experience", logo: <SiNodedotjs /> },
-  { title: "MongoDB", years: "1 Year Experience", logo: <SiMongodb /> },
 ];
