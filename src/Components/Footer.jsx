@@ -36,12 +36,12 @@ const Footer = () => {
         </div>
       )}
       <div className='pt-20 pb-11 flex flex-col items-center'>
-        <div className='dark:bg-[#272f3a] dark:text-bg-text  bg-gray-200 text-black rounded-lg p-8 flex flex-wrap min-[990px]:gap-5 items-center justify-center lg:justify-start'>
-          <p className='font-medium text-[14px] text-wrap pb-5 md:pb-0'>Building something new, validating ideas, or looking for a collaboration? Let’s talk.</p>
+        <div className='dark:bg-[#272f3a] dark:text-bg-text  bg-gray-200 text-black rounded-lg p-8 flex flex-wrap min-[990px]:gap-5 items-center justify-center '>
+          <p className='font-medium text-[14px] lg:text-[18px] text-center text-wrap pb-5 md:pb-0'>Building something new, validating ideas, or looking for a collaboration? Let’s talk.</p>
           <p className='font-bold md:text-[24px] text-[20px]'>adepitantobi@gmail.com</p>
         </div>
 
-        <div className=' p-8 grid grid-cols-3  sm:flex justify-center gap-15 '>
+        <div className=' p-8 flex justify-center gap-12 '>
           {contactProfiles.map((profile, index) => (
             <a href={profile.href} key={index} aria-label={profile.label} className='group relative flex  justify-center' target='_blank' rel='noreferrer'>
               {profile.icon}
@@ -64,7 +64,7 @@ const Footer = () => {
 
           {/* onClick={setIsModalOpen} */}
 
-          <Link to='/contact' className='flex items-center justify-center rounded-full bg-linear-to-r from-gray-300 to-white px-5 py-3 text-[14px] md:text-[16px] text-[#2563EB] transition-transform duration-300 hover:text-[#192239] hover:scale-107 cursor-pointer gap-2'>
+          <Link to='/contact' className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px] text-white transition-transform duration-300 hover:text-[#192239] hover:scale-107 cursor-pointer gap-2'>
             Let's build something
           </Link>
 

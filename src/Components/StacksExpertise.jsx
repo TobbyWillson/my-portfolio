@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { experiences, Skills } from "../constants/Materials";
 import { useTheme } from "./ThemeContext";
 
@@ -18,6 +18,8 @@ const StacksExpertise = () => {
     document.querySelectorAll(".scroll-item-experience").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const [activeCard, setActiveCard] = useState(null);
 
   return (
     <div className=''>
@@ -51,13 +53,13 @@ const StacksExpertise = () => {
               key={index}
               tabIndex={0}
               style={{ transitionDelay: `${(2 - (index % 3)) * 100}ms` }}
-              className={`scroll-item-experience ${isDark ? "bg-[#272f3a]" : "bg-gray-100 hover:bg-gray-50"} px-5  py-5 rounded-xl  dark:shadow-gray-50/10 hover:md:border-b-5 hover:md:border-red-500/50 hover:md:scale-105  focus:border-b-5 focus:border-red-500/50 focus:scale-105 border-border-gray dark:hover:bg-[#2f3844] transition-all duration-300`}
+              className={`scroll-item-experience ${isDark ? "bg-[#272f3a]" : "bg-gray-100 hover:bg-gray-50"} px-5  py-5 rounded-xl  dark:shadow-gray-50/10 hover:md:border-b-5 hover:md:border-red-500/50 hover:md:scale-105  focus-within:border-b-5 focus-within:border-red-500/50 focus-within:scale-105 border-border-gray dark:hover:bg-[#2f3844] transition-all duration-300 cursor-pointer`}
             >
               <div className='flex items-center gap-6 mb-5 text-[22px]'>{skill.category}</div>
 
               <div className='flex flex-wrap gap-3'>
                 {skill.items.map((item, index) => (
-                  <div key={index} className='flex gap-2 items-center border border-border-gray rounded-2xl px-3 py-2 text-[13px]'>
+                  <div key={index} tabIndex={0} className='flex gap-2 items-center border border-border-gray rounded-2xl px-3 py-2 text-[13px] hover:md:scale-107 focus:scale-107 transition-all duration-500'>
                     <div>{item.logo}</div>
                     <p>{item.title}</p>
                   </div>

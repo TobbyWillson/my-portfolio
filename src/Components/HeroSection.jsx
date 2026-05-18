@@ -158,10 +158,9 @@ const HeroSection = () => {
           <div className='flex w-fit' onClick={handleHireMe}>
             <button to=''>
               <div className='bg-[#586583] dark:bg-[#2763a0] border border-border-gray rounded-2xl  px-5 py-3 text-white text-[14px] md:text-[16px] flex justify-center items-center hover:scale-107 cursor-pointer transition-all duration-700  hover:bg-[#556daf]  gap-2'>
-                <div>
-                  <Contact className='w-5 h-5' />
-                </div>
-                <p>Contact me</p>
+                <Contact className='w-5 h-5' />
+
+                <p className='min-w-[80px]'>Contact me</p>
               </div>
             </button>
           </div>
@@ -176,7 +175,8 @@ const HeroSection = () => {
                   </>
                 ) : (
                   <>
-                    View Resume <FaChevronRight />
+                    View Resume
+                    <FaChevronRight />
                   </>
                 )}
               </p>

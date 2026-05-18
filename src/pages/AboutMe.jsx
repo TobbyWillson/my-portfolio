@@ -43,8 +43,8 @@ const AboutMe = () => {
     <section className='' id='about'>
       {/* Current Page Bar */}
 
-      <div className=' '>
-        <div className='container mx-auto '>
+      <div className=' max-w-3xl mx-auto'>
+        <div className=' mx-auto '>
           <div className=' mt-20 md:px-10'>
             {/* <img src='' alt='' className='' /> */}
             <div className=' border-b border-border-gray pb-5 rounded-lg'>
@@ -60,7 +60,7 @@ const AboutMe = () => {
           </div>
 
           {/* Details on what I do */}
-          <div id='resume' className='md:px-10  px-5 '>
+          <div id='resume' className='md:px-10   '>
             {aboutConfigs.map((about, index) => (
               <div key={index} className='flex flex-col gap-8 leading-8 mt-15'>
                 <h1 className='font-extrabold '>{about.aboutMe}</h1>
@@ -105,7 +105,7 @@ const AboutMe = () => {
               )}
             </Link>
 
-            <Link to={whatsappURL} target='_blank' rel='noreferrer' className='max-sm:'>
+            <Link to='/contact' className='max-sm:'>
               <p className='flex items-center justify-center rounded-2xl bg-[#586583] dark:bg-[#2763a0] px-5 py-3 text-[14px] md:text-[16px] text-white  hover:scale-107 transition-all duration-700 cursor-pointer gap-2 min-w-[140px]'>Contact me</p>
             </Link>
           </div>

@@ -40,9 +40,9 @@ const ProjectDetails = () => {
 
   return (
     <div className='mt-18 max-w-3xl mx-auto'>
-      <div onClick={goBack} className='flex gap-2 items-center text-[13px] mb-10 cursor-pointer'>
+      <div onClick={goBack} className='flex gap-2 items-center text-[14px] mb-10 cursor-pointer'>
         <MdArrowBack />
-        <p>go back</p>
+        <p>Projects</p>
       </div>
 
       <p className='mb-5 text-bg-text/70'>Case Study - {project.projectName}</p>
@@ -53,19 +53,19 @@ const ProjectDetails = () => {
 
         <div className='flex flex-col gap-2 mb-6'>
           <p className='text-[16px] font-bold border border-border-gray px-3 py-2 rounded-lg'>
-            Role: <span className='font-normal text-[14px]'> {hero.role}</span>
+            Role: <span className='font-normal text-[14px] text-bg-text/80'> {hero.role}</span>
           </p>
           <p className='text-[16px] font-bold border border-border-gray px-3 py-2 rounded-lg'>
-            Duration: <span className='font-normal text-[14px]'> {hero.duration}</span>
+            Duration: <span className='font-normal text-[14px] text-bg-text/80'> {hero.duration}</span>
           </p>
           <p className='text-[16px] font-bold border border-border-gray px-3 py-2 rounded-lg'>
-            Team: <span className='font-normal text-[14px]'> {hero.team}</span>
+            Team: <span className='font-normal text-[14px] text-bg-text/80'> {hero.team}</span>
           </p>
 
           <div className='flex flex-wrap gap-2 items-center border border-border-gray px-3 py-2 rounded-lg'>
             <p className='text-[16px] font-bold'>Tools:</p>
             {hero.tools.map((tool, index) => (
-              <h3 key={index} className='font-normal text-[14px] border border-border-gray px-3 py-1 rounded-lg'>
+              <h3 key={index} className='font-normal text-[14px] text-bg-text/80 border border-border-gray px-3 py-1 rounded-lg'>
                 {tool}
               </h3>
             ))}
@@ -76,7 +76,7 @@ const ProjectDetails = () => {
 
       {/* Overview of the Project */}
       <p className='mb-5 text-[22px] font-bold'>Overview</p>
-      <div className='flex flex-col md:flex-row gap-5 mb-6'>
+      <div className='grid sm:grid-cols-2 gap-5 mb-6'>
         <div className='flex flex-col gap-3 border border-border-gray bg-background rounded-lg px-3 p-2'>
           <p className='text-[16px] font-bold '>Context:</p>
           <h4 className='text-[14px] text-bg-text/80'> {overview.context}</h4>
@@ -87,7 +87,7 @@ const ProjectDetails = () => {
           <h4 className='text-[14px] text-bg-text/80'> {overview.problem}</h4>
         </div>
 
-        <div className='flex flex-col gap-3 border border-border-gray bg-background rounded-lg px-3 p-2'>
+        <div className='flex flex-col gap-3 border border-border-gray bg-background rounded-lg px-3 p-2 sm:last:col-span-2 '>
           <p className='text-[16px] font-bold'>Goal:</p>
           <h4 className='text-[14px] text-bg-text/80'> {overview.goal}</h4>
         </div>

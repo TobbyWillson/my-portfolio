@@ -39,7 +39,7 @@ const PreviousProjects = () => {
               <article
                 style={{ transitionDelay: `${(index % 3) * 100}ms` }}
                 tabIndex={0}
-                className={`scroll-item  group flex flex-col overflow-hidden rounded-xl shadow-md dark:shadow-gray-50/10 transition-all duration-300 hover:md:scale-[1.03] focus:scale-[1.03] hover:md:shadow-lg focus::shadow-lg dark:hover:md:shadow-gray-50/15 focus:shadow-gray-50/15 ${isDark ? "bg-[#272f3a] dark:hover:md:bg-[#2f3844]  focus:bg-[#2f3844]" : "bg-gray-100 hover:md:bg-gray-50 focus:bg-gray-50 "}`}
+                className={`scroll-item  group flex flex-col overflow-hidden rounded-xl shadow-md dark:shadow-gray-50/10 transition-all duration-300 hover:md:scale-[1.03] focus-within:scale-[1.03] hover:md:shadow-lg focus-within:shadow-lg dark:hover:md:shadow-gray-50/15 focus-within:shadow-gray-50/15 ${isDark ? "bg-[#272f3a] dark:hover:md:bg-[#2f3844]  focus-within:bg-[#2f3844]" : "bg-gray-100 hover:md:bg-gray-50 focus-within:bg-gray-50 "}`}
               >
                 <div className='relative aspect-[16/10] overflow-hidden bg-gray-200 dark:bg-gray-800'>
                   <img src={project.projectPreview} alt={project.alt} className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-110' loading='lazy' />
@@ -54,7 +54,7 @@ const PreviousProjects = () => {
 
                   <div className='flex flex-wrap gap-2 pb-4 border-b border-gray-600'>
                     {project.tools.map((tag) => (
-                      <span key={tag} className='rounded-full border border-border-gray px-3 py-0.5 text-xs font-medium text-bg-text/80 dark:text-gray-200/80 hover:bg-background'>
+                      <span key={tag} tabIndex={0} className='rounded-full border border-border-gray px-3 py-0.5 text-xs font-medium text-bg-text/80 dark:text-gray-200/80 hover:md:bg-background focus:bg-background hover:md:scale-107 focus:scale-107 duration-500 transition-all cursor-pointer'>
                         {tag}
                       </span>
                     ))}
