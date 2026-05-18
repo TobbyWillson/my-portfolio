@@ -66,7 +66,9 @@ const AboutMe = () => {
                 <h1 className='font-extrabold '>{about.aboutMe}</h1>
 
                 {about.whatIDo.map((what, index) => (
-                  <p className=''> {what} </p>
+                  <p className='' key={index}>
+                    {what}
+                  </p>
                 ))}
 
                 <p>

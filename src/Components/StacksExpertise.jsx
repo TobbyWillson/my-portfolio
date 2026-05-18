@@ -59,7 +59,7 @@ const StacksExpertise = () => {
 
               <div className='flex flex-wrap gap-3'>
                 {skill.items.map((item, index) => (
-                  <div key={index} tabIndex={0} className='flex gap-2 items-center border border-border-gray rounded-2xl px-3 py-2 text-[13px] hover:md:scale-107 focus:scale-107 transition-all duration-500'>
+                  <div key={index} tabIndex={0} className='flex gap-2 items-center border border-border-gray rounded-2xl px-3 py-1.5 text-[13px] hover:md:scale-108 focus:scale-110 transition-all duration-500'>
                     <div>{item.logo}</div>
                     <p>{item.title}</p>
                   </div>
